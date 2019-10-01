@@ -29,9 +29,23 @@ dependencies {
     implementation deps.androidx.appcompat
     implementation deps.androidx.core
     implementation deps.androidx.constraintLayout
+    implementation deps.androidx.material
+    implementation deps.androidx.cardview
+    implementation deps.androidx.recyclerview
 
-    // logging
+    // DI
+    implementation deps.di.koin
+    implementation deps.di.koinvm
+
+    // Networking
+    implementation deps.network.core
+    implementation deps.network.gson
+    implementation deps.network.okhttp
+    implementation deps.network.interceptor
+
+    // logging + debugging
     implementation deps.timber
+    debugImplementation deps.leakcanary
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
