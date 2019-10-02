@@ -30,7 +30,7 @@
     <dimen name="material_text_display2">45sp</dimen>
     <dimen name="material_text_display3">56sp</dimen>
     <dimen name="material_text_display4">112sp</dimen>
-    <dimen name="margin_image_top">100dp</dimen>
+    <dimen name="margin_image_top">80dp</dimen>
     <dimen name="margin_large_first_text_input">120dp</dimen>
 
     <dimen name="default_corner_radius">6dp</dimen>
