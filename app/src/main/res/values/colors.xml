@@ -11,5 +11,7 @@
     <color name="textSecondary">#888888</color>
 
     <color name="branchNavyBlue">#1C1C53</color>
+    <color name="branchStatusOpen">#4D8A31</color>
+    <color name="branchStatusClosed">#d60e00</color>
 
 </resources>

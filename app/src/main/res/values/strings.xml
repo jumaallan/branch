@@ -8,7 +8,7 @@
 
     <string name="onboarding_support_title">Support on Mobile</string>
     <string name="onboarding_support_description">Easily and conveniently reply to Branch chats on the fly using your Mobile App</string>
-    <string name="branch">Branch International</string>
+
     <string name="hint_enter_your_username">Enter Your Username</string>
     <string name="hint_enter_your_pin">Enter Your PIN</string>
 </resources>

@@ -46,6 +46,21 @@
         <item name="android:textColor">@color/textSecondary</item>
     </style>
 
+    <style name="MessageTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="MessageOverview" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="rowStatus">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <!--buttons-->
     <style name="button" parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:insetTop">0dp</item>
