@@ -28,6 +28,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
+
         val layoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
         recycler_view_onboard.layoutManager = layoutManager

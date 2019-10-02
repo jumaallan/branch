@@ -11,4 +11,7 @@
 
     <string name="hint_enter_your_username">Enter Your Username</string>
     <string name="hint_enter_your_pin">Enter Your PIN</string>
+
+    <string name="chat_open">open</string>
+    <string name="chat_closed">closed</string>
 </resources>

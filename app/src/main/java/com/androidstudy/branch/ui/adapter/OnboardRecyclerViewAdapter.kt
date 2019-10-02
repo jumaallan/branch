@@ -10,7 +10,6 @@ import com.androidstudy.branch.R
 import com.androidstudy.branch.ui.model.OnboardModel
 
 internal class OnboardRecyclerViewAdapter(
-
     private val onboardModelList: List<OnboardModel>
 ) : RecyclerView.Adapter<OnboardRecyclerViewAdapter.ViewHolder>() {
 
