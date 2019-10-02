@@ -66,6 +66,9 @@ dependencies {
     implementation deps.androidx.cardview
     implementation deps.androidx.recyclerview
 
+    //Circle Indicator
+    implementation deps.circleindicator
+
     // DI
     implementation deps.di.koin
     implementation deps.di.koinvm

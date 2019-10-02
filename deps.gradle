@@ -2,6 +2,7 @@ def versions = [
         androidx        : '1.1.0',
         constraintLayout: '1.1.3',
         material        : '1.0.0',
+        circleindicator : '2.1.2',
         koin            : '2.0.1',
         timber          : '4.6.0',
         retrofit        : '2.6.1',
@@ -12,7 +13,7 @@ def versions = [
 ext.versions = versions
 
 ext.deps = [
-        androidx  : [
+        androidx       : [
                 appcompat       : 'androidx.appcompat:appcompat:' + versions.androidx,
                 core            : 'androidx.core:core-ktx:' + versions.androidx,
                 constraintLayout: 'androidx.constraintlayout:constraintlayout:' + versions.constraintLayout,
@@ -20,16 +21,17 @@ ext.deps = [
                 cardview        : 'androidx.cardview:cardview:' + versions.material,
                 recyclerview    : 'androidx.recyclerview:recyclerview:' + versions.material,
         ],
-        di        : [
+        circleindicator: 'me.relex:circleindicator:' + versions.circleindicator,
+        di             : [
                 koin  : 'org.koin:koin-android:' + versions.koin,
                 koinvm: 'org.koin:koin-android-viewmodel:' + versions.koin,
         ],
-        network   : [
+        network        : [
                 core       : 'com.squareup.retrofit2:retrofit:' + versions.retrofit,
                 gson       : 'com.squareup.retrofit2:converter-gson:' + versions.retrofit,
                 okhttp     : 'com.squareup.okhttp3:okhttp:' + versions.okhttp,
                 interceptor: 'com.squareup.okhttp3:logging-interceptor:' + versions.okhttp,
         ],
-        timber    : 'com.jakewharton.timber:timber:' + versions.timber,
-        leakcanary: 'com.squareup.leakcanary:leakcanary-android:' + versions.leakcanary,
+        timber         : 'com.jakewharton.timber:timber:' + versions.timber,
+        leakcanary     : 'com.squareup.leakcanary:leakcanary-android:' + versions.leakcanary,
 ]
