@@ -8,6 +8,6 @@ class Constant {
          * Server URL
          */
         const val BASE_URL =
-            "https://android-messaging-app-2019.herokuapp.com/"
+            "https://android-messaging-app-2019.herokuapp.com/api/"
     }
 }
