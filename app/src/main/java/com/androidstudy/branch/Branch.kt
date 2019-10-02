@@ -4,6 +4,10 @@ import android.app.Application
 import androidx.annotation.Nullable
 import com.androidstudy.branch.settings.Settings
 import org.jetbrains.annotations.NotNull
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.error.KoinAppAlreadyStartedException
 import timber.log.Timber
 
 class Branch : Application() {
@@ -15,7 +19,20 @@ class Branch : Application() {
 
         settings = Settings(applicationContext)
 
+        initKoin()
         initTimber()
+    }
+
+    private fun initKoin() {
+        try {
+            startKoin {
+                androidLogger()
+                androidContext(applicationContext)
+                modules(com.androidstudy.branch.di.appModule)
+            }
+        } catch (error: KoinAppAlreadyStartedException) {
+            Timber.e(error.localizedMessage)
+        }
     }
 
     private fun initTimber() {
