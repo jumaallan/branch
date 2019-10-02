@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.model.Chat
+import com.androidstudy.branch.util.Utils
 
 
 internal class ChatsRecyclerViewAdapter(
@@ -36,6 +37,7 @@ internal class ChatsRecyclerViewAdapter(
         private val textViewUserName: TextView = itemView.findViewById(R.id.textViewUserName)
         private val textViewChatStatus: TextView = itemView.findViewById(R.id.textViewChatStatus)
         private val textViewMessageBody: TextView = itemView.findViewById(R.id.textViewMessageBody)
+        private val textViewTimeStamp: TextView = itemView.findViewById(R.id.textViewTimeStamp)
 
         fun bind(chat: Chat, context: Context) {
 //            imageViewUserAvatar.setImageResource(chat.image)
@@ -55,6 +57,7 @@ internal class ChatsRecyclerViewAdapter(
             }
 
             textViewMessageBody.text = chat.body
+            textViewTimeStamp.text = Utils.getFormattedUpdateTime(chat.timestamp)
         }
     }
 }

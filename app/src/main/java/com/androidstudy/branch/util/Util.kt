@@ -10,4 +10,3 @@ internal fun Activity.toast(message: CharSequence) {
     toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
         .apply { show() }
 }
-
