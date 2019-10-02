@@ -1,6 +1,7 @@
 package com.androidstudy.branch.di
 
 import com.androidstudy.branch.BuildConfig
+import com.androidstudy.branch.util.Constant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -10,7 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 val appModule = module {
 
     single {
-        val baseUrl = ""
 
         val interceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
@@ -29,7 +29,7 @@ val appModule = module {
 
         Retrofit
             .Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
