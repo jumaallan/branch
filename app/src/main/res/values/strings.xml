@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Branch Chat</string>
+
+    <string name="button_onboarding_next">Next</string>
+    <string name="button_onboarding_prev">Prev</string>
+
+    <string name="button_auth_login">Login</string>
+
+    <string name="onboarding_support_title">Support on Mobile</string>
+    <string name="onboarding_support_description">Easily and conveniently reply to Branch chats on the fly using your Mobile App</string>
 </resources>
