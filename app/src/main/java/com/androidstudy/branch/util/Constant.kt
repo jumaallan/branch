@@ -1,6 +1,7 @@
 package com.androidstudy.branch.util
 
 class Constant {
+
     companion object {
 
         /**
