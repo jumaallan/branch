@@ -12,4 +12,4 @@ Our customer service agents respond to inbound inquiries using our web-based app
 
 ### Credits
 
-All the Vector Images used are download for FREE from [freepik](https://www.freepik.com). The images are Free for personal and commercial purpose with attribution
+All the Vector Images used are downloaded for FREE from [freepik](https://www.freepik.com). The images are Free for personal and commercial purpose with attribution
