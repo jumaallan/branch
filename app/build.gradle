@@ -69,6 +69,11 @@ dependencies {
     //Circle Indicator
     implementation deps.circleindicator
 
+    // Room Database
+    implementation deps.room.core
+    implementation deps.room.runtime
+    implementation deps.room.roomCompiler
+
     // DI
     implementation deps.di.koin
     implementation deps.di.koinvm
@@ -79,7 +84,7 @@ dependencies {
     implementation deps.network.okhttp
     implementation deps.network.interceptor
 
-    // logging + debugging
+    // Logging + Debugging
     implementation deps.timber
     debugImplementation deps.leakcanary
 
