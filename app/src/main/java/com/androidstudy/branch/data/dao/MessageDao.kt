@@ -6,7 +6,7 @@ import com.androidstudy.branch.data.entities.Message
 
 interface MessageDao : BaseDao<Message> {
 
-    @Query("SELECT * FROM Message LIMIT 200")
-    fun fetchCustomers(): LiveData<List<Message>>
+    @Query("SELECT * FROM Message WHERE thread_id =:thread_id LIMIT 200")
+    fun fetchMessagesPerThread(thread_id: String): LiveData<List<Message>>
 
 }

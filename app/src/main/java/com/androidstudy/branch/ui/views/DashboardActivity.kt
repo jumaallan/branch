@@ -3,18 +3,34 @@ package com.androidstudy.branch.ui.views
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
+import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.model.Chat
-import com.androidstudy.branch.ui.adapter.ChatsRecyclerViewAdapter
+import com.androidstudy.branch.ui.adapter.ThreadRecyclerViewAdapter
+import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
+import com.androidstudy.branch.util.NetworkState
+import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.content_dashboard.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
+
+    private val threadViewModel: ThreadViewModel by viewModel()
+    private lateinit var threadRecyclerViewAdapter: ThreadRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+        setupViews()
+        setUpThreadList()
+
+    }
+
+    private fun setupViews() {
 
         swipeRefreshLayout.setColorSchemeResources(
             R.color.colorAccent,
@@ -23,19 +39,39 @@ class DashboardActivity : AppCompatActivity() {
             android.R.color.holo_red_light
         )
 
-        shimmerRecyclerView.showShimmerAdapter()
+    }
 
-        val models = prepareDemoChats()
+    private fun setUpThreadList() {
 
-        val itemDecor =
-            DividerItemDecoration(applicationContext, LinearLayout.VERTICAL)
-        val layoutManager =
-            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        shimmerRecyclerView.layoutManager = layoutManager
-        shimmerRecyclerView.addItemDecoration(itemDecor)
+        threadRecyclerViewAdapter = ThreadRecyclerViewAdapter()
+        shimmerRecyclerView.apply {
+            adapter = threadRecyclerViewAdapter
+            layoutManager =
+                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            addItemDecoration(
+                DividerItemDecoration(applicationContext, LinearLayout.VERTICAL)
+            )
+        }
 
-        val adapter = ChatsRecyclerViewAdapter(this, models)
-        shimmerRecyclerView.adapter = adapter
+        threadRecyclerViewAdapter.onThreadClickListener = ::onThreadClick
+
+        threadViewModel.threadDataSource.loadState.observe(this, Observer {
+            swipeRefreshLayout.isRefreshing =
+                it == NetworkState.LOADING
+        })
+
+        threadViewModel.fetchThreads().observe(this, Observer {
+            threadRecyclerViewAdapter.submitList(it)
+        })
+
+        swipeRefreshLayout.setOnRefreshListener {
+            threadViewModel.invalidateDataSource()
+        }
+
+    }
+
+    private fun onThreadClick(messageThread: MessageThread) {
+        toast(messageThread.thread_id.toString())
     }
 
     private fun prepareDemoChats(): List<Chat> {
