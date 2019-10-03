@@ -27,7 +27,7 @@ ext.deps = [
         circleindicator: 'me.relex:circleindicator:' + versions.circleindicator,
         room             : [
                 core  : 'androidx.room:room-ktx:' + versions.room,
-                runtime  : 'androidx.room:room-runtime' + versions.room,
+                runtime  : 'androidx.room:room-runtime:' + versions.room,
                 roomCompiler: 'android.arch.persistence.room:compiler:' + versions.roomCompiler,
         ],
         di             : [
