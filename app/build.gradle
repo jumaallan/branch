@@ -74,6 +74,13 @@ dependencies {
     implementation deps.room.runtime
     implementation deps.room.roomCompiler
 
+    // Paging
+    implementation deps.paging
+
+    // Kotlin Coroutines
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
+
     // DI
     implementation deps.di.koin
     implementation deps.di.koinvm

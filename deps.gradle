@@ -7,6 +7,8 @@ def versions = [
         room               : '2.2.0-rc01',
         roomCompiler       : '1.1.1',
         koin               : '2.0.1',
+        coroutines         : '1.1.1',
+        paging             : '2.1.0',
         timber             : '4.6.0',
         retrofit           : '2.6.1',
         okhttp             : '4.0.1',
@@ -25,10 +27,15 @@ ext.deps = [
                 recyclerview    : 'com.github.sharish:ShimmerRecyclerView:' + versions.shimmerRecyclerView,
         ],
         circleindicator: 'me.relex:circleindicator:' + versions.circleindicator,
-        room             : [
+        room           : [
                 core  : 'androidx.room:room-ktx:' + versions.room,
                 runtime  : 'androidx.room:room-runtime:' + versions.room,
                 roomCompiler: 'android.arch.persistence.room:compiler:' + versions.roomCompiler,
+        ],
+        paging         : 'androidx.paging:paging-runtime:' + versions.paging,
+        coroutines     : [
+                'core'   : 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + versions.coroutines,
+                'android': 'org.jetbrains.kotlinx:kotlinx-coroutines-android:' + versions.coroutines,
         ],
         di             : [
                 koin  : 'org.koin:koin-android:' + versions.koin,
