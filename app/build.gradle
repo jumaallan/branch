@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -70,9 +71,9 @@ dependencies {
     implementation deps.circleindicator
 
     // Room Database
-    implementation deps.room.core
     implementation deps.room.runtime
-    implementation deps.room.roomCompiler
+    kapt deps.room.core
+    kapt deps.room.roomCompiler
 
     // Paging
     implementation deps.paging
