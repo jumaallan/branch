@@ -36,7 +36,7 @@ class ThreadDataSource(
         }
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Thread>) {
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MessageThread>) {
         loadState.postValue(NetworkState.LOADING)
 
         scope.launch {
@@ -51,7 +51,7 @@ class ThreadDataSource(
         }
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Thread>) {
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, MessageThread>) {
         loadState.postValue(NetworkState.LOADED)
     }
 
