@@ -1,4 +1,4 @@
-## \[ 🚧 Work in progress 👷‍♀️⛏👷🔧️🚧 \] Branch Customer Service App 
+## \[ 🚧 Work in progress 👷‍♀️⛏👷🔧️🚧 \] Branch Customer Service App  [![CircleCI](https://circleci.com/gh/jumaallan/branch/tree/master.svg?style=shield)](https://circleci.com/gh/jumaallan/branch/tree/master) 
 
 
 👀  Writing Branch Customer Service App using [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/), in 100% Kotlin. 
