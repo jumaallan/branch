@@ -8,4 +8,5 @@ interface ThreadDao : BaseDao<Thread> {
 
     @Query("SELECT * FROM Thread LIMIT 200")
     fun fetchCustomers(): LiveData<List<Thread>>
+
 }

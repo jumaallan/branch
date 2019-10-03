@@ -8,4 +8,5 @@ interface MessageDao : BaseDao<Message> {
 
     @Query("SELECT * FROM Message LIMIT 200")
     fun fetchCustomers(): LiveData<List<Message>>
+
 }
