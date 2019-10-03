@@ -14,18 +14,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    def keystorePropertiesFile = rootProject.file("keystore.properties")
-    def keystoreProperties = new Properties()
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+//    def keystorePropertiesFile = rootProject.file("keystore.properties")
+//    def keystoreProperties = new Properties()
+//    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-    signingConfigs {
-        release {
-            storeFile keystoreProperties[""]
-            storePassword keystoreProperties[""]
-            keyAlias keystoreProperties[""]
-            keyPassword keystoreProperties[""]
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile keystoreProperties[""]
+//            storePassword keystoreProperties[""]
+//            keyAlias keystoreProperties[""]
+//            keyPassword keystoreProperties[""]
+//        }
+//    }
 
     dataBinding {
         enabled = true
