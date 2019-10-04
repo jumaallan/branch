@@ -7,6 +7,7 @@ import com.androidstudy.branch.di.dataModule
 import com.androidstudy.branch.di.networkModule
 import com.androidstudy.branch.di.threadModule
 import com.androidstudy.branch.settings.Settings
+import com.facebook.stetho.Stetho
 import org.jetbrains.annotations.NotNull
 import org.koin.android.ext.android.startKoin
 import timber.log.Timber
@@ -22,6 +23,11 @@ class Branch : Application() {
 
         initKoin()
         initTimber()
+        initStetho()
+    }
+
+    private fun initStetho() {
+        Stetho.initializeWithDefaults(this)
     }
 
     private fun initKoin() {

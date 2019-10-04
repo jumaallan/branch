@@ -100,6 +100,7 @@ dependencies {
 
     // Logging + Debugging
     implementation deps.timber
+    debugImplementation deps.stetho
     debugImplementation deps.leakcanary
 
     testImplementation 'junit:junit:4.12'

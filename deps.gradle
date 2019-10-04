@@ -11,6 +11,7 @@ def versions = [
         coroutines         : '1.1.1',
         paging             : '2.1.0',
         timber             : '4.6.0',
+        stetho             : '1.5.1',
         retrofit           : '2.6.1',
         okhttp             : '4.0.1',
         leakcanary         : '2.0-beta-2',
@@ -51,5 +52,6 @@ ext.deps = [
                 interceptor: 'com.squareup.okhttp3:logging-interceptor:' + versions.okhttp,
         ],
         timber         : 'com.jakewharton.timber:timber:' + versions.timber,
+        stetho         : 'com.facebook.stetho:stetho:' + versions.stetho,
         leakcanary     : 'com.squareup.leakcanary:leakcanary-android:' + versions.leakcanary,
 ]
