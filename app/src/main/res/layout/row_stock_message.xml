@@ -18,6 +18,6 @@
         android:paddingBottom="5dp"
         android:textColor="@color/white"
         android:textSize="12sp"
-        tools:text="Welcome to `branch" />
+        tools:text="Welcome to Branch Support" />
 
 </LinearLayout>

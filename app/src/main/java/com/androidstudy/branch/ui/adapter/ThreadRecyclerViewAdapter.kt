@@ -33,20 +33,17 @@ class ThreadRecyclerViewAdapter :
         ) = with(itemView) {
 
             textViewUserName.text = item.user_id
-
             when {
                 item.status == "status_open" -> textViewChatStatus.background =
                     context.resources.getDrawable(R.drawable.bg_status_open)
                 else -> textViewChatStatus.background =
                     context.resources.getDrawable(R.drawable.bg_status_closed)
             }
-
             when {
                 item.status == "status_open" -> textViewChatStatus.text =
                     context.getString(R.string.chat_open)
                 else -> textViewChatStatus.text = context.getString(R.string.chat_closed)
             }
-
             textViewMessageBody.text = item.body
             textViewTimeStamp.text = Utils.getFormattedUpdateTime(item.timestamp)
 
