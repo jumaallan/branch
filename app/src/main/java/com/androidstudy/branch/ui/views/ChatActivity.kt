@@ -2,6 +2,7 @@ package com.androidstudy.branch.ui.views
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.androidstudy.branch.R
 
 class ChatActivity : AppCompatActivity() {
 

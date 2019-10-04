@@ -43,7 +43,6 @@
 
         <activity android:name=".ui.views.ChatActivity" />
 
-
     </application>
 
 </manifest>

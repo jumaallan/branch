@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/image_message_profile"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/ic_branch_icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_message_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintLeft_toRightOf="@+id/image_message_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Rob Brambley" />
+
+    <TextView
+        android:id="@+id/text_message_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:maxWidth="240dp"
+        android:padding="4dp"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/image_message_profile"
+        app:layout_constraintTop_toBottomOf="@+id/text_message_name"
+        tools:text="Hey, hello. How can we be of help today?" />
+
+    <TextView
+        android:id="@+id/text_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_message_body"
+        app:layout_constraintEnd_toEndOf="@+id/text_message_body"
+        tools:text="11:40" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
