@@ -6,12 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Branch"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".Branch"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
@@ -29,12 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.views.OnboardingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".ui.views.LoginActivity"
             android:screenOrientation="portrait"
@@ -42,6 +40,9 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity android:name=".ui.views.DashboardActivity" />
+
+        <activity android:name=".ui.views.ChatActivity" />
+
 
     </application>
 
