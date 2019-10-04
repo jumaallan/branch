@@ -12,7 +12,6 @@ import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.ui.adapter.ThreadRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
 import com.androidstudy.branch.util.NetworkState
-import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.content_dashboard.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -74,8 +73,6 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun onThreadClick(chat: Chat) {
-        toast(chat.thread_id.toString())
-
         startActivity(Intent(this, ChatActivity::class.java))
     }
 }
