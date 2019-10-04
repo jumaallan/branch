@@ -9,14 +9,28 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewChat"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:itemCount="5"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewStockMessage"
+        tools:itemCount="4"
         tools:listitem="@layout/row_message_received"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewStockMessage"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@id/view"
+        tools:itemCount="4"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_stock_message"
+        tools:orientation="horizontal" />
+
     <View
+        android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginBottom="0dp"
@@ -53,10 +67,11 @@
             android:layout_width="64dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom"
+            android:fontFamily="@font/poppins_semibold"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:text="@string/send_message"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
