@@ -1,5 +1,7 @@
 package com.androidstudy.branch.data.model
 
+import androidx.annotation.Nullable
+
 class Chat(
     var id: Int,
     var thread_id: Int,
@@ -7,9 +9,9 @@ class Chat(
     var body: String,
     var timestamp: String,
     var status: String,
+    @Nullable
     var agent_id: String
 ) {
-
     fun toChat(): Chat {
         return Chat(
             id,
@@ -18,7 +20,14 @@ class Chat(
             body,
             timestamp,
             status,
-            agent_id
+            agentIdIsNull()
         )
+    }
+
+    private fun agentIdIsNull(): String {
+        if (agent_id.isNullOrEmpty()) {
+            return ""
+        }
+        return agent_id
     }
 }

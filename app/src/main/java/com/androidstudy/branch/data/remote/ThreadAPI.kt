@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ThreadAPI {
 
-    @GET("/messages")
+    @GET("api/messages")
     suspend fun getMessages(): List<Chat>
 }

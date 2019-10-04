@@ -22,7 +22,7 @@ val appModule = module {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("X-Branch-Auth-Token", "")
+                    .addHeader("X-Branch-Auth-Token", "ekql7AWB4s6FXVnDD5DCqg")
                     .build()
                 chain.proceed(request)
             }.addInterceptor(interceptor).build()
