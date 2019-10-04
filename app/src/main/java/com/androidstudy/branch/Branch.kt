@@ -29,7 +29,7 @@ class Branch : Application() {
         try {
             startKoin {
                 androidLogger()
-                androidContext(applicationContext)
+                androidContext(this@Branch)
                 listOf(appModule, threadModule)
             }
         } catch (error: KoinAppAlreadyStartedException) {

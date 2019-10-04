@@ -11,10 +11,9 @@ import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.ui.adapter.ThreadRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
-import com.androidstudy.branch.util.NetworkState
 import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.content_dashboard.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -54,11 +53,11 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         threadRecyclerViewAdapter.onThreadClickListener = ::onThreadClick
-
-        threadViewModel.threadDataSource.loadState.observe(this, Observer {
-            swipeRefreshLayout.isRefreshing =
-                it == NetworkState.LOADING
-        })
+//
+//        threadViewModel.threadDataSource.loadState.observe(this, Observer {
+//            swipeRefreshLayout.isRefreshing =
+//                it == NetworkState.LOADING
+//        })
 
         threadViewModel.fetchThreads().observe(this, Observer {
             threadRecyclerViewAdapter.submitList(it)

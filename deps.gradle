@@ -41,7 +41,7 @@ ext.deps = [
         ],
         di             : [
                 koin  : 'org.koin:koin-android:' + versions.koin,
-                koinvm: 'org.koin:koin-android-viewmodel:' + versions.koin,
+                koinvm: 'org.koin:koin-androidx-viewmodel:' + versions.koin,
         ],
         network        : [
                 core       : 'com.squareup.retrofit2:retrofit:' + versions.retrofit,
