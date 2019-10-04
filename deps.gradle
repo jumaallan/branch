@@ -4,6 +4,7 @@ def versions = [
         material           : '1.0.0',
         shimmerRecyclerView: 'v1.3',
         circleindicator    : '2.1.2',
+        circleimageview    : '3.0.1',
         room               : '2.2.0-rc01',
         roomCompiler       : '1.1.1',
         koin               : '2.0.1',
@@ -27,6 +28,7 @@ ext.deps = [
                 recyclerview    : 'com.github.sharish:ShimmerRecyclerView:' + versions.shimmerRecyclerView,
         ],
         circleindicator: 'me.relex:circleindicator:' + versions.circleindicator,
+        circleimageview: 'de.hdodenhof:circleimageview:' + versions.circleimageview,
         room           : [
                 core  : 'androidx.room:room-ktx:' + versions.room,
                 runtime  : 'androidx.room:room-runtime:' + versions.room,

@@ -7,7 +7,7 @@
     android:paddingTop="8dp">
 
     <TextView
-        android:id="@+id/text_message_body"
+        android:id="@+id/textMessageBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -19,13 +19,13 @@
         tools:text="My number is 0790898526 help me to validate it please so i can be able to access the loan" />
 
     <TextView
-        android:id="@+id/text_message_time"
+        android:id="@+id/textMessageTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/text_message_body"
-        app:layout_constraintRight_toRightOf="@+id/text_message_body"
+        app:layout_constraintBottom_toBottomOf="@+id/textMessageBody"
+        app:layout_constraintRight_toRightOf="@+id/textMessageBody"
         tools:text="11:40" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

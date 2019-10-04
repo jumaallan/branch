@@ -67,8 +67,11 @@ dependencies {
     implementation deps.androidx.cardview
     implementation deps.androidx.recyclerview
 
-    //Circle Indicator
+    // Circle Indicator
     implementation deps.circleindicator
+
+    // Circle ImageView
+    implementation deps.circleimageview
 
     // Room Database
     implementation deps.room.runtime
