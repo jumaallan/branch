@@ -8,4 +8,17 @@ class Chat(
     var timestamp: String,
     var status: String,
     var agent_id: String
-)
+) {
+
+    fun toChat(): Chat {
+        return Chat(
+            id,
+            thread_id,
+            user_id,
+            body,
+            timestamp,
+            status,
+            agent_id
+        )
+    }
+}

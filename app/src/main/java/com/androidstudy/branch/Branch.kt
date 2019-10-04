@@ -3,6 +3,7 @@ package com.androidstudy.branch
 import android.app.Application
 import androidx.annotation.Nullable
 import com.androidstudy.branch.di.appModule
+import com.androidstudy.branch.di.dataModule
 import com.androidstudy.branch.di.threadModule
 import com.androidstudy.branch.settings.Settings
 import org.jetbrains.annotations.NotNull
@@ -30,7 +31,7 @@ class Branch : Application() {
             startKoin {
                 androidLogger()
                 androidContext(this@Branch)
-                listOf(appModule, threadModule)
+                listOf(appModule, threadModule, dataModule)
             }
         } catch (error: KoinAppAlreadyStartedException) {
             Timber.e(error.localizedMessage)
