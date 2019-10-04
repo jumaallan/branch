@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.ui.adapter.ThreadRecyclerViewAdapter
-import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
+import com.androidstudy.branch.ui.viewmodel.ChatViewModel
 import com.androidstudy.branch.util.NetworkState
 import kotlinx.android.synthetic.main.content_dashboard.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
 
-    private val threadViewModel: ThreadViewModel by viewModel()
+    private val chatViewModel: ChatViewModel by viewModel()
     private lateinit var threadRecyclerViewAdapter: ThreadRecyclerViewAdapter
 
     @ExperimentalCoroutinesApi
@@ -57,17 +57,17 @@ class DashboardActivity : AppCompatActivity() {
 
         threadRecyclerViewAdapter.onThreadClickListener = ::onThreadClick
 
-        threadViewModel.threadDataSource.loadState.observe(this, Observer {
+        chatViewModel.chatDataSource.loadState.observe(this, Observer {
             swipeRefreshLayout.isRefreshing =
                 it == NetworkState.LOADING
         })
 
-        threadViewModel.fetchThreads().observe(this, Observer {
+        chatViewModel.fetchThreads().observe(this, Observer {
             threadRecyclerViewAdapter.submitList(it)
         })
 
         swipeRefreshLayout.setOnRefreshListener {
-            threadViewModel.invalidateDataSource()
+            chatViewModel.invalidateDataSource()
         }
 
     }

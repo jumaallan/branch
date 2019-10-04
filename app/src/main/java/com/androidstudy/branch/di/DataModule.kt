@@ -1,13 +1,13 @@
 package com.androidstudy.branch.di
 
-import com.androidstudy.branch.data.remote.ThreadAPI
-import com.androidstudy.branch.data.repository.ThreadRepository
-import com.androidstudy.branch.data.repository.ThreadRepositoryImpl
+import com.androidstudy.branch.data.remote.ChatAPI
+import com.androidstudy.branch.data.repository.ChatRepository
+import com.androidstudy.branch.data.repository.ChatRepositoryImpl
 import org.koin.dsl.module.module
 
 val dataModule = module {
-    single<ThreadRepository> { provideThreadRepository(get()) }
+    single<ChatRepository> { provideThreadRepository(get()) }
 }
 
-fun provideThreadRepository(threadAPI: ThreadAPI) =
-    ThreadRepositoryImpl(threadAPI)
+fun provideThreadRepository(chatAPI: ChatAPI) =
+    ChatRepositoryImpl(chatAPI)

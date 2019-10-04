@@ -3,12 +3,12 @@ package com.androidstudy.branch.ui.adapter
 import androidx.paging.DataSource
 import com.androidstudy.branch.data.model.Chat
 
-import com.androidstudy.branch.data.repository.ThreadRepository
+import com.androidstudy.branch.data.repository.ChatRepository
 
-class ThreadDataSourceFactory(private val threadRepository: ThreadRepository) :
+class ChatDataSourceFactory(private val chatRepository: ChatRepository) :
 
     DataSource.Factory<Int, Chat>() {
     override fun create(): DataSource<Int, Chat> {
-        return ThreadDataSource(threadRepository)
+        return ChatDataSource(chatRepository)
     }
 }

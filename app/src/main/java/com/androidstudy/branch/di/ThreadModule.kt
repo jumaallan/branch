@@ -1,19 +1,19 @@
 package com.androidstudy.branch.di
 
-import com.androidstudy.branch.data.repository.ThreadRepository
-import com.androidstudy.branch.ui.adapter.ThreadDataSourceFactory
-import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
+import com.androidstudy.branch.data.repository.ChatRepository
+import com.androidstudy.branch.ui.adapter.ChatDataSourceFactory
+import com.androidstudy.branch.ui.viewmodel.ChatViewModel
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val threadModule = module {
-    single { provideThreadDataSourceFactory(get()) }
-    viewModel { provideThreadViewModel(get()) }
+    single { provideChatDataSourceFactory(get()) }
+    viewModel { provideChatViewModel(get()) }
 }
 
 
-fun provideThreadDataSourceFactory(repository: ThreadRepository) =
-    ThreadDataSourceFactory(repository)
+fun provideChatDataSourceFactory(repository: ChatRepository) =
+    ChatDataSourceFactory(repository)
 
-fun provideThreadViewModel(dataSourceFactory: ThreadDataSourceFactory) =
-    ThreadViewModel(dataSourceFactory)
+fun provideChatViewModel(dataSourceFactory: ChatDataSourceFactory) =
+    ChatViewModel(dataSourceFactory)

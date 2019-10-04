@@ -3,7 +3,7 @@ package com.androidstudy.branch.ui.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.androidstudy.branch.data.model.Chat
 
-class ThreadDiffUtil : DiffUtil.ItemCallback<Chat>() {
+class ChatDiffUtil : DiffUtil.ItemCallback<Chat>() {
 
     override fun areItemsTheSame(oldItem: Chat, newItem: Chat): Boolean =
         oldItem.id == newItem.id

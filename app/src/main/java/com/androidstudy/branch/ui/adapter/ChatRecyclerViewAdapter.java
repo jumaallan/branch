@@ -15,14 +15,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ChatListAdapter extends RecyclerView.Adapter {
+public class ChatRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
 
     private List<Chat> mMessageList;
 
-    public ChatListAdapter(List<Chat> messageList) {
+    public ChatRecyclerViewAdapter(List<Chat> messageList) {
         mMessageList = messageList;
     }
 

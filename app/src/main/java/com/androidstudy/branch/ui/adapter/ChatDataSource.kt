@@ -3,12 +3,12 @@ package com.androidstudy.branch.ui.adapter
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.androidstudy.branch.data.model.Chat
-import com.androidstudy.branch.data.repository.ThreadRepository
+import com.androidstudy.branch.data.repository.ChatRepository
 import com.androidstudy.branch.util.NetworkState
 import kotlinx.coroutines.*
 
-class ThreadDataSource(
-    private val repository: ThreadRepository
+class ChatDataSource(
+    private val repository: ChatRepository
 ) : PageKeyedDataSource<Int, Chat>() {
 
     var loadState: MutableLiveData<NetworkState> = MutableLiveData()

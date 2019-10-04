@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.message_list_item.view.*
 
 class ThreadRecyclerViewAdapter :
     PagedListAdapter<Chat, ThreadRecyclerViewAdapter.ThreadViewHolder>(
-        ThreadDiffUtil()
+        ChatDiffUtil()
     ) {
 
     lateinit var onThreadClickListener: (Chat) -> Unit

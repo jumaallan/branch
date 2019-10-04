@@ -28,7 +28,7 @@ open class BaseRepository {
             NetworkResult.Success(response)
         } catch (e: Exception) {
             Timber.e(e)
-            NetworkResult.Error(IOException("Error Occurred: ERROR - $errorMessage"))
+            NetworkResult.Error(IOException("Error Occurred - $errorMessage"))
         }
     }
 }

@@ -24,9 +24,9 @@ class Settings(
         return settings.getBoolean("is_logged_in", false)
     }
 
-    fun setIsLoggedIn(isloggedin: Boolean) {
+    fun setIsLoggedIn(isLoggedIn: Boolean) {
         val editor = settings.edit()
-        editor.putBoolean("is_logged_in", isloggedin)
+        editor.putBoolean("is_logged_in", isLoggedIn)
         editor.apply()
     }
 }

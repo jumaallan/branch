@@ -1,15 +1,15 @@
 package com.androidstudy.branch.data.repository
 
 import com.androidstudy.branch.data.model.Chat
-import com.androidstudy.branch.data.remote.ThreadAPI
+import com.androidstudy.branch.data.remote.ChatAPI
 import javax.inject.Inject
 
-class ThreadRepositoryImpl @Inject constructor(private val threadAPI: ThreadAPI) : BaseRepository(),
-    ThreadRepository {
+class ChatRepositoryImpl @Inject constructor(private val chatAPI: ChatAPI) : BaseRepository(),
+    ChatRepository {
 
     override suspend fun fetchMessageThreads(page: Int): List<Chat>? {
         return call(
-            { threadAPI.getMessages().map { it.toChat() } },
+            { chatAPI.getMessages().map { it.toChat() } },
             "Error Getting Messages"
         )
     }

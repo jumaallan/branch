@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.model.Chat
-import com.androidstudy.branch.ui.adapter.ChatListAdapter
+import com.androidstudy.branch.ui.adapter.ChatRecyclerViewAdapter
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.model.StockMessageDemo
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.content_chat.*
 
 class ChatActivity : AppCompatActivity() {
 
-    private lateinit var chatListAdapter: ChatListAdapter
+    private lateinit var chatRecyclerViewAdapter: ChatRecyclerViewAdapter
     private lateinit var stockMessageRecyclerViewAdapter: StockMessageRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,16 +49,17 @@ class ChatActivity : AppCompatActivity() {
 
     private fun setupDemoChat(chatList: List<Chat>) {
 
-        chatListAdapter = ChatListAdapter(chatList)
+        chatRecyclerViewAdapter =
+            ChatRecyclerViewAdapter(chatList)
         recyclerViewChat.apply {
-            adapter = chatListAdapter
+            adapter = chatRecyclerViewAdapter
             layoutManager =
                 LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         }
     }
 
     private fun prepareDemoStockMessages(): List<StockMessageDemo> {
-        val models = ArrayList<StockMessageDemo>(3)
+        val models = ArrayList<StockMessageDemo>(5)
         models.add(
             StockMessageDemo(
                 "Account: Delete My Account",
@@ -93,7 +94,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun prepareDemoChats(): List<Chat> {
-        val models = ArrayList<Chat>(3)
+        val models = ArrayList<Chat>(4)
         models.add(
             Chat(
                 1,
