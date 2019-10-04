@@ -10,6 +10,7 @@ import com.androidstudy.branch.ui.adapter.ChatListAdapter
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.model.StockMessageDemo
+import kotlinx.android.synthetic.main.chat_toolbar.*
 import kotlinx.android.synthetic.main.content_chat.*
 
 class ChatActivity : AppCompatActivity() {
@@ -20,6 +21,8 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        tvToolBarTitle.text = "Juma Allan"
 
         setupDemoChat(prepareDemoChats())
         setupDemoStock(prepareDemoStockMessages())

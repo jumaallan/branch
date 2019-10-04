@@ -77,6 +77,5 @@ class DashboardActivity : AppCompatActivity() {
         toast(chat.thread_id.toString())
 
         startActivity(Intent(this, ChatActivity::class.java))
-        finish()
     }
 }
