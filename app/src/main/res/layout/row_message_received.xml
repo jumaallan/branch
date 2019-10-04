@@ -26,10 +26,11 @@
 
     <TextView
         android:id="@+id/textMessageBody"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".8"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:maxWidth="240dp"
         android:padding="4dp"
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/imageMessageProfile"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textMessageBody"
+        app:layout_constraintTop_toBottomOf="@+id/textMessageBody"
         app:layout_constraintEnd_toEndOf="@+id/textMessageBody"
         tools:text="11:40" />
 

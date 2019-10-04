@@ -8,11 +8,13 @@
 
     <TextView
         android:id="@+id/textSentMessageBody"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:background="@drawable/bg_message_sent"
+        android:padding="8dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:maxWidth="240dp"
-        android:padding="4dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".8"
         android:textSize="12sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textSentMessageBody"
+        app:layout_constraintTop_toBottomOf="@+id/textSentMessageBody"
         app:layout_constraintRight_toRightOf="@+id/textSentMessageBody"
         tools:text="11:40" />
 
