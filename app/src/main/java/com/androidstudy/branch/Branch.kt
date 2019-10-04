@@ -7,10 +7,7 @@ import com.androidstudy.branch.di.dataModule
 import com.androidstudy.branch.di.threadModule
 import com.androidstudy.branch.settings.Settings
 import org.jetbrains.annotations.NotNull
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.core.error.KoinAppAlreadyStartedException
+import org.koin.android.ext.android.startKoin
 import timber.log.Timber
 
 class Branch : Application() {
@@ -26,16 +23,8 @@ class Branch : Application() {
         initTimber()
     }
 
-    open fun initKoin() {
-        try {
-            startKoin {
-                androidLogger()
-                androidContext(this@Branch)
-                listOf(appModule, threadModule, dataModule)
-            }
-        } catch (error: KoinAppAlreadyStartedException) {
-            Timber.e(error.localizedMessage)
-        }
+    private fun initKoin() {
+        startKoin(this, listOf(appModule, threadModule, dataModule))
     }
 
     private fun initTimber() {

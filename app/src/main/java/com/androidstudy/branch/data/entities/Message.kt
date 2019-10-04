@@ -1,9 +1,13 @@
 package com.androidstudy.branch.data.entities
 
+import androidx.annotation.NonNull
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 class Message(
+    @PrimaryKey
+    @NonNull
     var id: Int,
     var thread_id: Int,
     var user_id: String,

@@ -2,14 +2,14 @@ package com.androidstudy.branch.ui.adapter
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.androidstudy.branch.data.entities.MessageThread
+import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.data.repository.ThreadRepository
 import com.androidstudy.branch.util.NetworkState
 import kotlinx.coroutines.*
 
 class ThreadDataSource(
     private val repository: ThreadRepository
-) : PageKeyedDataSource<Int, MessageThread>() {
+) : PageKeyedDataSource<Int, Chat>() {
 
     var loadState: MutableLiveData<NetworkState> = MutableLiveData()
 
@@ -19,7 +19,7 @@ class ThreadDataSource(
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, MessageThread>
+        callback: LoadInitialCallback<Int, Chat>
     ) {
 
         loadState.postValue(NetworkState.LOADING)
@@ -35,7 +35,7 @@ class ThreadDataSource(
         }
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MessageThread>) {
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Chat>) {
         loadState.postValue(NetworkState.LOADING)
 
         scope.launch {
@@ -50,7 +50,7 @@ class ThreadDataSource(
         }
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, MessageThread>) {
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Chat>) {
         loadState.postValue(NetworkState.LOADED)
     }
 

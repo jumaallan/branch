@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.androidstudy.branch.R
-import com.androidstudy.branch.data.entities.MessageThread
+import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.util.Utils
 import com.androidstudy.branch.util.inflate
 import kotlinx.android.synthetic.main.message_list_item.view.*
 
 class ThreadRecyclerViewAdapter :
-    PagedListAdapter<MessageThread, ThreadRecyclerViewAdapter.ThreadViewHolder>(
+    PagedListAdapter<Chat, ThreadRecyclerViewAdapter.ThreadViewHolder>(
         ThreadDiffUtil()
     ) {
 
-    lateinit var onThreadClickListener: (MessageThread) -> Unit
+    lateinit var onThreadClickListener: (Chat) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder =
         ThreadViewHolder(parent.inflate(R.layout.message_list_item))
@@ -28,8 +28,8 @@ class ThreadRecyclerViewAdapter :
 
     inner class ThreadViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(
-            item: MessageThread,
-            onThreadClickListener: (MessageThread) -> Unit
+            item: Chat,
+            onThreadClickListener: (Chat) -> Unit
         ) = with(itemView) {
 
             textViewUserName.text = item.user_id

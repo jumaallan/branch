@@ -90,7 +90,6 @@ dependencies {
     // DI
     implementation deps.di.koin
     implementation deps.di.koinvm
-    implementation deps.di.lifecycle
     implementation deps.inject
 
     // Networking

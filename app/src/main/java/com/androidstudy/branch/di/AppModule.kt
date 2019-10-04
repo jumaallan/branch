@@ -4,7 +4,7 @@ import com.androidstudy.branch.BuildConfig
 import com.androidstudy.branch.util.Constant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.dsl.module
+import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
