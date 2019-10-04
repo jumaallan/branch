@@ -1,5 +1,6 @@
 package com.androidstudy.branch.ui.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class DashboardActivity : AppCompatActivity() {
     private val threadViewModel: ThreadViewModel by viewModel()
     private lateinit var threadRecyclerViewAdapter: ThreadRecyclerViewAdapter
 
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -73,6 +75,9 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun onThreadClick(chat: Chat) {
         toast(chat.thread_id.toString())
+
+        startActivity(Intent(this, ChatActivity::class.java))
+        finish()
     }
 
     private fun prepareDemoChats(): List<Chat> {
