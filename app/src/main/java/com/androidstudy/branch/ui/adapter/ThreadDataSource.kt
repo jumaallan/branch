@@ -8,7 +8,6 @@ import com.androidstudy.branch.util.NetworkState
 import kotlinx.coroutines.*
 
 class ThreadDataSource(
-
     private val repository: ThreadRepository
 ) : PageKeyedDataSource<Int, MessageThread>() {
 
@@ -55,6 +54,7 @@ class ThreadDataSource(
         loadState.postValue(NetworkState.LOADED)
     }
 
+    @ExperimentalCoroutinesApi
     override fun invalidate() {
         super.invalidate()
         scope.cancel()

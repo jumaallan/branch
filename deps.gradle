@@ -8,6 +8,7 @@ def versions = [
         room               : '2.2.0-rc01',
         roomCompiler       : '1.1.1',
         koin               : '2.0.1',
+        lifecycle          : '2.0.0-rc01',
         coroutines         : '1.1.1',
         paging             : '2.1.0',
         timber             : '4.6.0',
@@ -40,8 +41,9 @@ ext.deps = [
                 'android': 'org.jetbrains.kotlinx:kotlinx-coroutines-android:' + versions.coroutines,
         ],
         di             : [
-                koin  : 'org.koin:koin-android:' + versions.koin,
-                koinvm: 'org.koin:koin-androidx-viewmodel:' + versions.koin,
+                koin     : 'org.koin:koin-android:' + versions.koin,
+                koinvm   : 'org.koin:koin-androidx-viewmodel:' + versions.koin,
+                lifecycle: 'androidx.lifecycle:lifecycle-extensions:' + versions.lifecycle,
         ],
         network        : [
                 core       : 'com.squareup.retrofit2:retrofit:' + versions.retrofit,

@@ -25,7 +25,7 @@ class Branch : Application() {
         initTimber()
     }
 
-    private fun initKoin() {
+    open fun initKoin() {
         try {
             startKoin {
                 androidLogger()

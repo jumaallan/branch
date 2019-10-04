@@ -7,6 +7,7 @@ import androidx.paging.PagedList
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.ui.adapter.ThreadDataSource
 import com.androidstudy.branch.ui.adapter.ThreadDataSourceFactory
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class ThreadViewModel(dataSourceFactory: ThreadDataSourceFactory) : ViewModel() {
 
@@ -24,6 +25,7 @@ class ThreadViewModel(dataSourceFactory: ThreadDataSourceFactory) : ViewModel() 
         return pagedList
     }
 
+    @ExperimentalCoroutinesApi
     fun invalidateDataSource() {
         threadDataSource.invalidate()
     }
