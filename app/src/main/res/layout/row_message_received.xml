@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:paddingTop="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -20,19 +21,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@+id/imageMessageProfile"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Rob Brambley" />
 
     <TextView
+        style="@style/chatTextViews"
         android:id="@+id/textMessageBody"
         android:layout_width="0dp"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent=".8"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:padding="4dp"
-        android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/imageMessageProfile"
         app:layout_constraintTop_toBottomOf="@+id/textMessageName"
         tools:text="Hey, hello. How can we be of help today?" />
