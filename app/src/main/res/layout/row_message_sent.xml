@@ -16,6 +16,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent=".8"
+        android:padding="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="My number is 0790898526 help me to validate it please so i can be able to access the loan" />
