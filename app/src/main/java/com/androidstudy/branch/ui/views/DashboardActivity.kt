@@ -20,7 +20,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DashboardActivity : AppCompatActivity() {
 
     private val vm: ThreadViewModel by viewModel()
-    private lateinit var threadRecyclerViewAdapter: ThreadRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

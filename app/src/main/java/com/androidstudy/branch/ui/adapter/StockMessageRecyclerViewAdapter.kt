@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.androidstudy.branch.R
-import com.androidstudy.branch.ui.model.StockMessageDemo
+import com.androidstudy.branch.data.entities.StockMessage
 
 internal class StockMessageRecyclerViewAdapter(
-    private val stockMessageDemoList: List<StockMessageDemo>,
+    private val stockMessageList: List<StockMessage>,
     private var listener: CustomItemClickListener
 ) : RecyclerView.Adapter<StockMessageRecyclerViewAdapter.ViewHolder>() {
 
@@ -22,19 +22,19 @@ internal class StockMessageRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int {
-        return stockMessageDemoList.size
+        return stockMessageList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(stockMessageDemoList[position])
+        holder.bind(stockMessageList[position])
     }
 
     internal class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val stockMessage: AppCompatTextView =
+        private val textStockMessage: AppCompatTextView =
             itemView.findViewById(R.id.textStockMessage)
 
-        fun bind(stockMessageDemo: StockMessageDemo) {
-            stockMessage.text = stockMessageDemo.title
+        fun bind(stockMessage: StockMessage) {
+            textStockMessage.text = stockMessage.title
         }
     }
 }
