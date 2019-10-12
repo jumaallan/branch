@@ -9,10 +9,10 @@ import com.androidstudy.branch.data.entities.MessageThread
 @Dao
 interface ChatDao : BaseDao<MessageThread> {
 
-    @Query("SELECT * FROM MessageThread LIMIT 200")
+    @Query("SELECT * FROM MessageThread")
     fun fetchMessageThreads(): LiveData<List<MessageThread>>
 
-    @Query("SELECT * FROM Message WHERE thread_id =:thread_id LIMIT 200")
+    @Query("SELECT * FROM Message WHERE thread_id =:thread_id")
     fun fetchMessagesPerThread(thread_id: String): LiveData<List<Message>>
 
 }

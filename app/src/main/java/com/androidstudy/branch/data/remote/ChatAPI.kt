@@ -14,5 +14,5 @@ interface ChatAPI {
     fun loginUser(@Body userLogin: UserLogin): Call<UserResponse>
 
     @GET("api/messages")
-    suspend fun getMessages(): List<Chat>
+    fun getMessages(): List<Chat>
 }

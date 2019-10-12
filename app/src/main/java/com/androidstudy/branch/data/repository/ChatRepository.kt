@@ -1,9 +1,10 @@
 package com.androidstudy.branch.data.repository
 
-import com.androidstudy.branch.data.model.Chat
+import com.androidstudy.branch.data.dao.ChatDao
+import retrofit2.Retrofit
 
-interface ChatRepository {
+class ChatRepository(retrofit: Retrofit, chatDao: ChatDao) {
 
-    suspend fun fetchMessageThreads(page: Int): List<Chat>?
-
+    private var dao = chatDao
+    private var network = retrofit
 }
