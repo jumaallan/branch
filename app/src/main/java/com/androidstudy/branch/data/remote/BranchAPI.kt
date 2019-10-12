@@ -8,7 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface ChatAPI {
+interface BranchAPI {
 
     @POST("login")
     fun loginUser(@Body userLogin: UserLogin): Call<UserResponse>

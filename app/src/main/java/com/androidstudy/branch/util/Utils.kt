@@ -5,7 +5,6 @@ import android.text.format.DateUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 internal class Utils {
 
     companion object {

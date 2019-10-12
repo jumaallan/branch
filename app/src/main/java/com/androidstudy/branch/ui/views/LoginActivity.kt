@@ -9,7 +9,7 @@ import com.androidstudy.branch.Branch
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.model.UserLogin
 import com.androidstudy.branch.data.model.UserResponse
-import com.androidstudy.branch.data.remote.ChatAPI
+import com.androidstudy.branch.data.remote.BranchAPI
 import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
@@ -22,7 +22,7 @@ import timber.log.Timber
 class LoginActivity : AppCompatActivity() {
 
     private val retrofit: Retrofit by inject()
-    private var chatInterface: ChatAPI? = null
+    private var branchInterface: BranchAPI? = null
     private lateinit var app: Branch
     private lateinit var progressDialog: ProgressDialog
 
@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setUp() {
         app = application as Branch
-        chatInterface = retrofit.create(ChatAPI::class.java)
+        branchInterface = retrofit.create(BranchAPI::class.java)
     }
 
     fun validateInput(view: View) {
@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
         progressDialog.show()
 
         val user = UserLogin(username, pin)
-        val call = chatInterface?.loginUser(user)
+        val call = branchInterface?.loginUser(user)
         call?.enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 progressDialog.dismiss()
