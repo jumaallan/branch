@@ -9,6 +9,6 @@ import com.androidstudy.branch.data.entities.MessageThread
 interface ThreadDao : BaseDao<MessageThread> {
 
     @Query("SELECT * FROM MessageThread")
-    fun fetchMessageThreads(): DataSource.Factory<Int, MessageThread>
+    fun fetchThreads(): DataSource.Factory<Int, MessageThread>
 
 }

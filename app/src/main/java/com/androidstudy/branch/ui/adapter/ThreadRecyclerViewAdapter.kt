@@ -1,54 +1,63 @@
 package com.androidstudy.branch.ui.adapter
 
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.androidstudy.branch.R
-import com.androidstudy.branch.data.model.Chat
+import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.util.Utils
-import com.androidstudy.branch.util.inflate
-import kotlinx.android.synthetic.main.message_list_item.view.*
 
-class ThreadRecyclerViewAdapter :
-    PagedListAdapter<Chat, ThreadRecyclerViewAdapter.ThreadViewHolder>(
-        ChatDiffUtil()
-    ) {
+internal class ThreadRecyclerViewAdapter(
+    private val messageThreadList: List<MessageThread>,
+    private var context: Context,
+    private var listener: CustomItemClickListener
+) : RecyclerView.Adapter<ThreadRecyclerViewAdapter.ViewHolder>() {
 
-    lateinit var onThreadClickListener: (Chat) -> Unit
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThreadViewHolder =
-        ThreadViewHolder(parent.inflate(R.layout.message_list_item))
-
-    override fun onBindViewHolder(holder: ThreadViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bind(it, onThreadClickListener)
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.row_message_thread, parent, false)
+        val mViewHolder = ViewHolder(view)
+        view.setOnClickListener { v -> listener.onItemClick(v, mViewHolder.position) }
+        return mViewHolder
     }
 
-    inner class ThreadViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(
-            item: Chat,
-            onThreadClickListener: (Chat) -> Unit
-        ) = with(itemView) {
+    override fun getItemCount(): Int {
+        return messageThreadList.size
+    }
 
-            textViewUserName.text = item.user_id
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(messageThreadList[position], context)
+    }
+
+    internal class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val textViewUserName: TextView =
+            itemView.findViewById(R.id.textViewUserName)
+        private val textViewMessageBody: TextView =
+            itemView.findViewById(R.id.textViewMessageBody)
+        private val textViewTimeStamp: TextView =
+            itemView.findViewById(R.id.textViewTimeStamp)
+        private val textViewChatStatus: TextView = itemView.findViewById(R.id.textViewChatStatus)
+
+        fun bind(
+            messageThread: MessageThread,
+            context: Context
+        ) {
+            textViewUserName.text = messageThread.id.toString()
+            textViewMessageBody.text = messageThread.body
+            textViewTimeStamp.text = Utils.getFormattedUpdateTime(messageThread.timestamp)
             when {
-                item.status == "status_open" -> textViewChatStatus.background =
+                messageThread.status == "status_open" -> textViewChatStatus.background =
                     context.resources.getDrawable(R.drawable.bg_status_open)
                 else -> textViewChatStatus.background =
                     context.resources.getDrawable(R.drawable.bg_status_closed)
             }
             when {
-                item.status == "status_open" -> textViewChatStatus.text =
+                messageThread.status == "status_open" -> textViewChatStatus.text =
                     context.getString(R.string.chat_open)
                 else -> textViewChatStatus.text = context.getString(R.string.chat_closed)
-            }
-            textViewMessageBody.text = item.body
-            textViewTimeStamp.text = Utils.getFormattedUpdateTime(item.timestamp)
-
-            itemView.setOnClickListener {
-                onThreadClickListener(item)
             }
         }
     }

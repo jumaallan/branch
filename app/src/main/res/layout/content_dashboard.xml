@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             app:shimmer_demo_angle="20"
             app:shimmer_demo_child_count="10"
-            app:shimmer_demo_layout="@layout/message_list_item"
+            app:shimmer_demo_layout="@layout/row_message_thread"
             app:shimmer_demo_layout_manager_type="linear_vertical" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
