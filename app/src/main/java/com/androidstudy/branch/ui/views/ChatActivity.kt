@@ -2,15 +2,12 @@ package com.androidstudy.branch.ui.views
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.entities.Message
 import com.androidstudy.branch.data.entities.StockMessage
-import com.androidstudy.branch.ui.adapter.ChatRecyclerViewAdapter
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
@@ -42,21 +39,21 @@ class ChatActivity : AppCompatActivity() {
         if (messageList.isNullOrEmpty()) {
             recyclerViewChat.visibility = View.GONE
         } else {
-            recyclerViewChat.visibility = View.VISIBLE
-
-            val itemDecor =
-                DividerItemDecoration(this, LinearLayout.VERTICAL)
-            val layoutManager =
-                LinearLayoutManager(
-                    this,
-                    LinearLayoutManager.VERTICAL,
-                    false
-                )
-            recyclerViewChat.layoutManager = layoutManager
-            recyclerViewChat.addItemDecoration(itemDecor)
-
-            val customerAdapter = ChatRecyclerViewAdapter(messageList)
-            recyclerViewChat.adapter = customerAdapter
+//            recyclerViewChat.visibility = View.VISIBLE
+//
+//            val itemDecor =
+//                DividerItemDecoration(this, LinearLayout.VERTICAL)
+//            val layoutManager =
+//                LinearLayoutManager(
+//                    this,
+//                    LinearLayoutManager.VERTICAL,
+//                    false
+//                )
+//            recyclerViewChat.layoutManager = layoutManager
+//            recyclerViewChat.addItemDecoration(itemDecor)
+//
+//            val customerAdapter = ChatRecyclerViewAdapter(messageList)
+//            recyclerViewChat.adapter = customerAdapter
         }
     }
 
