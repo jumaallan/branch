@@ -3,6 +3,7 @@ package com.androidstudy.branch.data
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.androidstudy.branch.data.dao.ChatDao
+import com.androidstudy.branch.data.dao.ThreadDao
 import com.androidstudy.branch.data.entities.Message
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.entities.StockMessage
@@ -21,5 +22,7 @@ import com.androidstudy.branch.data.entities.StockMessage
 abstract class BranchDatabase : RoomDatabase() {
 
     abstract fun chatDao(): ChatDao
+
+    abstract fun threadDao(): ThreadDao
 
 }

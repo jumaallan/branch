@@ -4,7 +4,9 @@ import androidx.room.Room
 import com.androidstudy.branch.BuildConfig
 import com.androidstudy.branch.data.BranchDatabase
 import com.androidstudy.branch.data.repository.ChatRepository
+import com.androidstudy.branch.data.repository.ThreadRepository
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
+import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
 import com.androidstudy.branch.util.Constant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,14 +49,26 @@ val databaseModule = module {
     }
 }
 
-val daoModule = module {
+val chatDaoModule = module {
     single { get<BranchDatabase>().chatDao() }
 }
 
-val repositoryModule = module {
+val threadDaoModule = module {
+    single { get<BranchDatabase>().threadDao() }
+}
+
+val chatRepoModule = module {
     single { ChatRepository(get(), get()) }
 }
 
-val viewModelModule = module {
+val threadRepoModule = module {
+    single { ThreadRepository(get(), get()) }
+}
+
+val threadViewModel = module {
+    viewModel { ThreadViewModel(get()) }
+}
+
+val chatViewModel = module {
     viewModel { ChatViewModel(get()) }
 }

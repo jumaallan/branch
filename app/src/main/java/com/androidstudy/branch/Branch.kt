@@ -36,7 +36,16 @@ class Branch : Application() {
     private fun initKoin() {
         startKoin(
             this,
-            listOf(retrofitModule, databaseModule, daoModule, repositoryModule, viewModelModule)
+            listOf(
+                retrofitModule,
+                databaseModule,
+                chatDaoModule,
+                threadDaoModule,
+                chatRepoModule,
+                threadRepoModule,
+                threadViewModel,
+                chatViewModel
+            )
         )
     }
 
