@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 29
@@ -12,21 +13,38 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    def keystorePropertiesFile = rootProject.file("keystore.properties")
-//    def keystoreProperties = new Properties()
-//    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    buildTypes {
+        release {
+            minifyEnabled true
+            manifestPlaceholders = [crashlyticsEnabled: true]
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix = '-debug'
+            manifestPlaceholders = [crashlyticsEnabled: false]
+        }
+    }
 
-//    signingConfigs {
-//        release {
-//            storeFile keystoreProperties[""]
-//            storePassword keystoreProperties[""]
-//            keyAlias keystoreProperties[""]
-//            keyPassword keystoreProperties[""]
-//        }
-//    }
+    signingConfigs {
+        debug {
+            storeFile file("../keystore/debug.keystore")
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+            storePassword "android"
+        }
+    }
+
+    lintOptions {
+        // Eliminates UnusedResources false positives for resources used in DataBinding layouts
+        checkGeneratedSources = true
+        // Running lint over the debug variant is enough
+        checkReleaseBuilds false
+        // See lint.xml for rules configuration
+    }
 
     dataBinding {
         enabled = true
@@ -39,13 +57,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
@@ -113,3 +124,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
