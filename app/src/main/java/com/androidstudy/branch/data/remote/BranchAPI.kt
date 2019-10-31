@@ -1,5 +1,6 @@
 package com.androidstudy.branch.data.remote
 
+import com.androidstudy.branch.data.entities.StockMessage
 import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.data.model.UserLogin
 import com.androidstudy.branch.data.model.UserResponse
@@ -16,4 +17,7 @@ interface BranchAPI {
 
     @GET("api/messages")
     suspend fun getMessages(): Response<List<Chat>>
+
+    @GET("api/stock_messages")
+    suspend fun getStockMessages(): Response<List<StockMessage>>
 }

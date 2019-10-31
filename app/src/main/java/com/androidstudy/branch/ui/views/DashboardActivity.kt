@@ -12,6 +12,7 @@ import com.androidstudy.branch.R
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.ThreadRecyclerViewAdapter
+import com.androidstudy.branch.ui.viewmodel.StockMessageViewModel
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
 import com.androidstudy.branch.util.livedata.nonNull
 import com.androidstudy.branch.util.livedata.observe
@@ -22,7 +23,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
 
-    private val vm: ThreadViewModel by viewModel()
+    private val threadViewModel: ThreadViewModel by viewModel()
+    private val stockMessageViewModel: StockMessageViewModel by viewModel()
     private lateinit var app: Branch
 
     private var signOutDialog: SignOutDialog? = null
@@ -45,12 +47,13 @@ class DashboardActivity : AppCompatActivity() {
         )
 
         if (app.settings.isFirstTime()!!) {
-            vm.getMessageThreads()
+            threadViewModel.getMessageThreads()
+            stockMessageViewModel.getStockMessageThreads()
         }
 
-        observeLiveData()
+        observeFirstSyncLiveData()
 
-        vm.fetchThreads().observe(this, Observer {
+        threadViewModel.fetchThreads().observe(this, Observer {
             setUpViews(it)
         })
 
@@ -83,25 +86,37 @@ class DashboardActivity : AppCompatActivity() {
                 override fun onItemClick(v: View, position: Int) {
                     val messageThread = messageThreadList[position]
                     toast(messageThread.body)
+
+                    //TODO :: Move to the chat page, and pull all chats with the thread id, isolate the Branch ones - then show stock messages as well
                 }
             })
             recyclerView.adapter = customerAdapter
         }
     }
 
-    private fun observeLiveData() {
-        vm.getThreadsResponse().nonNull().observe(this) { list ->
+    private fun observeFirstSyncLiveData() {
+        threadViewModel.getThreadsResponse().nonNull().observe(this) { list ->
             if (list.isNotEmpty()) {
                 app.settings.setIsFirstTime(false)
 
-                vm.fetchThreads().observe(this, Observer {
+                threadViewModel.fetchThreads().observe(this, Observer {
                     setUpViews(it)
                 })
             }
         }
-        vm.getThreadsError().nonNull().observe(this) {
+        threadViewModel.getThreadsError().nonNull().observe(this) {
             app.settings.setIsFirstTime(true)
         }
+
+        stockMessageViewModel.getStockMessageResponse().nonNull().observe(this) { list ->
+            if (list.isNotEmpty()) {
+                app.settings.setIsFirstTime(false)
+            }
+        }
+        stockMessageViewModel.getStockMessageError().nonNull().observe(this) {
+            app.settings.setIsFirstTime(true)
+        }
+
     }
 
     private fun logout() {
@@ -115,9 +130,9 @@ class DashboardActivity : AppCompatActivity() {
         super.onResume()
 
         if (app.settings.isFirstTime()!!) {
-            vm.getMessageThreads()
+            threadViewModel.getMessageThreads()
         }
-        vm.fetchThreads().observe(this, Observer {
+        threadViewModel.fetchThreads().observe(this, Observer {
             setUpViews(it)
         })
     }

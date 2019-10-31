@@ -4,8 +4,10 @@ import androidx.room.Room
 import com.androidstudy.branch.BuildConfig
 import com.androidstudy.branch.data.BranchDatabase
 import com.androidstudy.branch.data.repository.ChatRepository
+import com.androidstudy.branch.data.repository.StockMessageRepository
 import com.androidstudy.branch.data.repository.ThreadRepository
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
+import com.androidstudy.branch.ui.viewmodel.StockMessageViewModel
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
 import com.androidstudy.branch.util.Constant
 import okhttp3.OkHttpClient
@@ -28,7 +30,7 @@ val retrofitModule = module(override = true) {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("X-Branch-Auth-Token", "itPudTFm5LpsNMTVX1bKxQ")
+                    .addHeader("X-Branch-Auth-Token", "VD3OLfqb8cia2EoVu1MmQg")
                     .build()
                 chain.proceed(request)
             }.addInterceptor(interceptor).build()
@@ -57,6 +59,10 @@ val threadDaoModule = module {
     single { get<BranchDatabase>().threadDao() }
 }
 
+val stockMessageDaoModule = module {
+    single { get<BranchDatabase>().stockMessageDao() }
+}
+
 val chatRepoModule = module {
     single { ChatRepository(get(), get()) }
 }
@@ -65,10 +71,18 @@ val threadRepoModule = module {
     single { ThreadRepository(get(), get()) }
 }
 
+val stockMessageRepoModule = module {
+    single { StockMessageRepository(get(), get()) }
+}
+
 val threadViewModel = module {
     viewModel { ThreadViewModel(get()) }
 }
 
 val chatViewModel = module {
     viewModel { ChatViewModel(get()) }
+}
+
+val stockMessageViewModel = module {
+    viewModel { StockMessageViewModel(get()) }
 }

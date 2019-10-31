@@ -41,10 +41,13 @@ class Branch : Application() {
                 databaseModule,
                 chatDaoModule,
                 threadDaoModule,
+                stockMessageDaoModule,
                 chatRepoModule,
                 threadRepoModule,
+                stockMessageRepoModule,
                 threadViewModel,
-                chatViewModel
+                chatViewModel,
+                stockMessageViewModel
             )
         )
     }

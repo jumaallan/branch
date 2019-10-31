@@ -9,6 +9,7 @@ class StockMessage(
     @PrimaryKey
     @NonNull
     var id: Int,
-    var title: String,
-    var description: String
+    var name: String,
+    var category: String,
+    var body: String
 )

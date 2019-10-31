@@ -67,7 +67,7 @@ class ChatActivity : AppCompatActivity() {
                     CustomItemClickListener {
                     override fun onItemClick(v: View, position: Int) {
                         val stockMessage = stockMessageList[position]
-                        editTextMessageBody.setText(stockMessage.description)
+                        editTextMessageBody.setText(stockMessage.body)
                     }
                 })
 

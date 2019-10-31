@@ -34,7 +34,7 @@ internal class StockMessageRecyclerViewAdapter(
             itemView.findViewById(R.id.textStockMessage)
 
         fun bind(stockMessage: StockMessage) {
-            textStockMessage.text = stockMessage.title
+            textStockMessage.text = stockMessage.name
         }
     }
 }
