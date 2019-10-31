@@ -4,6 +4,8 @@
 
 👀  Writing Branch Customer Service App using [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/), in 100% Kotlin. 
 
+>> I have commited the google-services json file, but should be replaced with one generated on your side
+
 
 ### Background
 
