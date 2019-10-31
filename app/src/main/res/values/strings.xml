@@ -16,5 +16,6 @@
     <string name="chat_closed">closed</string>
     <string name="send_message">SEND</string>
     <string name="chat_enter_message">Enter message...</string>
+    <string name="button_auth_issue">Need Help?</string>
 
 </resources>

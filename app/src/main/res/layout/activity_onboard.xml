@@ -64,6 +64,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
+            style="@style/buttonAuthIssue"
+            android:onClick="openIssueScreen"
+            android:text="@string/button_auth_issue" />
+
+        <com.google.android.material.button.MaterialButton
             style="@style/buttonAuthLogin"
             android:onClick="openLoginScreen"
             android:text="@string/button_auth_login" />

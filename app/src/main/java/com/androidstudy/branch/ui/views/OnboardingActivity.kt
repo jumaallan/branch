@@ -11,6 +11,7 @@ import com.androidstudy.branch.R
 import com.androidstudy.branch.ui.adapter.OnboardRecyclerViewAdapter
 import com.androidstudy.branch.ui.model.OnboardModel
 import com.androidstudy.branch.util.getSnapPosition
+import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.activity_onboard.*
 
 class OnboardingActivity : AppCompatActivity() {
@@ -89,6 +90,10 @@ class OnboardingActivity : AppCompatActivity() {
 
     fun openLoginScreen(view: View) {
         startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    fun openIssueScreen(view: View) {
+        toast("Clicked on Need Help")
     }
 
     override fun onResume() {
