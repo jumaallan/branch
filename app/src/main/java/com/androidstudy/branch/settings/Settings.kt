@@ -31,7 +31,7 @@ class Settings(
     }
 
     fun isFirstTime(): Boolean? {
-        return settings.getBoolean("is_first_time", false)
+        return settings.getBoolean("is_first_time", true)
     }
 
     fun setIsFirstTime(isFirstTime: Boolean) {

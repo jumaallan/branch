@@ -42,7 +42,18 @@ class ThreadRepository(
         emit(dao.fetchThreads())
     }
 
-    private suspend fun saveThreads(chatList: List<Chat>) {
-        dao.insert(chatList)
+    private fun saveThreads(chatList: List<Chat>) {
+
+        for (chat in chatList) {
+            val messageThread = MessageThread(
+                0,
+                chat.thread_id,
+                chat.user_id,
+                chat.body,
+                chat.status,
+                chat.timestamp
+            )
+            dao.insert(messageThread)
+        }
     }
 }

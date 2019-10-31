@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
                     val userResponse = response.body()
 
                     app.settings.setIsLoggedIn(true)
+                    app.settings.setIsFirstTime(true)
                     app.settings.setBranchAuthToken(userResponse!!.auth_token)
 
                     startActivity(Intent(applicationContext, DashboardActivity::class.java))

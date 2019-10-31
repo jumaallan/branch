@@ -45,11 +45,11 @@ class DashboardActivity : AppCompatActivity() {
 
         if (app.settings.isFirstTime()!!) {
             vm.getMessageThreads()
-        } else {
-            vm.fetchThreads().observe(this, Observer {
-                setUpViews(it)
-            })
         }
+
+        vm.fetchThreads().observe(this, Observer {
+            setUpViews(it)
+        })
 
     }
 
@@ -60,9 +60,10 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setUpViews(messageThreadList: List<MessageThread>?) {
         if (messageThreadList.isNullOrEmpty()) {
-            shimmerRecyclerView.visibility = View.GONE
+            recyclerView.visibility = View.GONE
         } else {
-            shimmerRecyclerView.visibility = View.VISIBLE
+            app.settings.setIsFirstTime(false)
+            recyclerView.visibility = View.VISIBLE
 
             val itemDecor =
                 DividerItemDecoration(this, LinearLayout.VERTICAL)
@@ -72,17 +73,17 @@ class DashboardActivity : AppCompatActivity() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-            shimmerRecyclerView.layoutManager = layoutManager
-            shimmerRecyclerView.addItemDecoration(itemDecor)
+            recyclerView.layoutManager = layoutManager
+            recyclerView.addItemDecoration(itemDecor)
 
             val customerAdapter = ThreadRecyclerViewAdapter(messageThreadList, this, object :
                 CustomItemClickListener {
                 override fun onItemClick(v: View, position: Int) {
                     val messageThread = messageThreadList[position]
-                    toast(messageThread.body.toString())
+                    toast(messageThread.body)
                 }
             })
-            shimmerRecyclerView.adapter = customerAdapter
+            recyclerView.adapter = customerAdapter
         }
     }
 
@@ -100,11 +101,9 @@ class DashboardActivity : AppCompatActivity() {
 
         if (app.settings.isFirstTime()!!) {
             vm.getMessageThreads()
-        } else {
-            vm.fetchThreads().observe(this, Observer {
-                setUpViews(it)
-            })
         }
-
+        vm.fetchThreads().observe(this, Observer {
+            setUpViews(it)
+        })
     }
 }

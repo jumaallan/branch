@@ -28,7 +28,7 @@ val retrofitModule = module(override = true) {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("X-Branch-Auth-Token", "ekql7AWB4s6FXVnDD5DCqg")
+                    .addHeader("X-Branch-Auth-Token", "itPudTFm5LpsNMTVX1bKxQ")
                     .build()
                 chain.proceed(request)
             }.addInterceptor(interceptor).build()
