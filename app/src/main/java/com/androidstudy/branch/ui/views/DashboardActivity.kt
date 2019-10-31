@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.Branch
@@ -44,9 +43,13 @@ class DashboardActivity : AppCompatActivity() {
             android.R.color.holo_red_light
         )
 
-        vm.fetchThreads().observe(this, Observer {
-            setUpViews(it)
-        })
+        if (app.settings.isFirstTime()!!) {
+            vm.getMessageThreads()
+        } else {
+            vm.fetchThreads().observe(this, Observer {
+                setUpViews(it)
+            })
+        }
 
     }
 
@@ -55,7 +58,7 @@ class DashboardActivity : AppCompatActivity() {
 //        signOutDialog = SignOutDialog.newInstance({ dialog -> logout() })
     }
 
-    private fun setUpViews(messageThreadList: PagedList<MessageThread>?) {
+    private fun setUpViews(messageThreadList: List<MessageThread>?) {
         if (messageThreadList.isNullOrEmpty()) {
             shimmerRecyclerView.visibility = View.GONE
         } else {
@@ -76,7 +79,7 @@ class DashboardActivity : AppCompatActivity() {
                 CustomItemClickListener {
                 override fun onItemClick(v: View, position: Int) {
                     val messageThread = messageThreadList[position]
-                    toast(messageThread?.body.toString())
+                    toast(messageThread.body.toString())
                 }
             })
             shimmerRecyclerView.adapter = customerAdapter
@@ -96,12 +99,12 @@ class DashboardActivity : AppCompatActivity() {
         super.onResume()
 
         if (app.settings.isFirstTime()!!) {
-
+            vm.getMessageThreads()
+        } else {
+            vm.fetchThreads().observe(this, Observer {
+                setUpViews(it)
+            })
         }
-
-        vm.fetchThreads().observe(this, Observer {
-            setUpViews(it)
-        })
 
     }
 }

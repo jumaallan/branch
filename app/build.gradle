@@ -93,6 +93,9 @@ dependencies {
 
     // Paging
     implementation deps.paging
+    implementation deps.androidx.extensions
+    implementation deps.androidx.viewModelExt
+    implementation deps.androidx.lifecycleExt
 
     // Kotlin Coroutines
     implementation deps.coroutines.core
