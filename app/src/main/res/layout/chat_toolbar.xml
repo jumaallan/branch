@@ -27,7 +27,7 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:textColor="@color/white"
                 android:textSize="@dimen/material_text_headline"
-                app:fontFamily="@font/poppins_semibold"
+                app:fontFamily="@font/oxygen_bold"
                 tools:text="Juma Allan" />
 
         </RelativeLayout>

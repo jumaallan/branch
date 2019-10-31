@@ -71,7 +71,7 @@
             android:layout_height="48dp"
             android:layout_gravity="bottom"
             android:background="?attr/selectableItemBackground"
-            android:fontFamily="@font/poppins_semibold"
+            android:fontFamily="@font/oxygen_bold"
             android:gravity="center"
             android:text="@string/send_message"
             android:textSize="15sp" />

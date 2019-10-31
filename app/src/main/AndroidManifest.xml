@@ -15,10 +15,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
         <activity
             android:name=".ui.views.SplashActivity"
             android:screenOrientation="portrait"
