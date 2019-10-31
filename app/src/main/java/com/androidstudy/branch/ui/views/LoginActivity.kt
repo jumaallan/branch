@@ -26,7 +26,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var app: Branch
     private lateinit var progressDialog: ProgressDialog
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility =
@@ -91,7 +90,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 progressDialog.dismiss()
                 toast("Server error occurred")
-                Timber.d(t.localizedMessage.toString())
+                Timber.d(t.localizedMessage)
             }
         })
     }
