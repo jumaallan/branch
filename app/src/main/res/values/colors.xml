@@ -14,5 +14,6 @@
     <color name="branchStatusOpen">#4D8A31</color>
     <color name="branchStatusClosed">#d60e00</color>
     <color name="branchGreyBackground">#F6F6F6</color>
+    <color name="branchListDivider">#1f000000</color>>
 
 </resources>

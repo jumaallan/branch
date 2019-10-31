@@ -119,6 +119,8 @@ dependencies {
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     implementation 'com.google.firebase:firebase-perf:19.0.1'
 
+    implementation 'com.afollestad.material-dialogs:core:0.9.4.7'
+
     // Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

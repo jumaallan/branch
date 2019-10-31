@@ -20,5 +20,15 @@
     <string name="powered_by">Branch International</string>
     <string name="report_issue">Report Issue</string>
     <string name="forgot_pin">Forgot PIN?</string>
+    <string name="welcome_username">Hi Juma Allan</string>
+    <string name="settings_tos">Terms of Service</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="sign_out">Sign Out</string>
+
+    <string name="text_sign_in_advantages">
+        When signed in:
+        \n\n&#8226; Your can get message notifications on the go.
+        \n\n&#8226; App preferences will be persisted across app installs.
+    </string>
 
 </resources>

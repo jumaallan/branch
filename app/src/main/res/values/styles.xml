@@ -116,4 +116,19 @@
         <item name="android:padding">4dp</item>
     </style>
 
+    <!-- List item primary text, e.g. event titles, codelab titles -->
+    <style name="TextAppearance.Branch.TextViewHeaders" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/oxygen_bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="fontFamily">@font/oxygen_bold</item>
+    </style>
+
+    <!-- Account dialogs -->
+    <style name="TextAppearance.Branch.AccountDialog.Username" parent="@style/TextAppearance.Branch.TextViewHeaders" />
+
+    <style name="Widget.Branch.BorderlessButton.NormalText" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">?android:textAppearance</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
 </resources>

@@ -19,10 +19,13 @@ import kotlinx.android.synthetic.main.content_dashboard.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class DashboardActivity : AppCompatActivity() {
 
     private val vm: ThreadViewModel by viewModel()
     private lateinit var app: Branch
+
+    private var signOutDialog: SignOutDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,7 @@ class DashboardActivity : AppCompatActivity() {
         setUp()
 
         imageViewUserAvatar.setOnClickListener {
-
+            signOutDialog?.show(supportFragmentManager, "profile")
         }
 
         swipeRefreshLayout.setColorSchemeResources(
@@ -49,6 +52,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setUp() {
         app = application as Branch
+//        signOutDialog = SignOutDialog.newInstance({ dialog -> logout() })
     }
 
     private fun setUpViews(messageThreadList: PagedList<MessageThread>?) {
@@ -77,6 +81,15 @@ class DashboardActivity : AppCompatActivity() {
             })
             shimmerRecyclerView.adapter = customerAdapter
         }
+    }
+
+    private fun logout() {
+
+        if (app.settings.isLoggedIn()!!) {
+            return
+        }
+
+
     }
 
     override fun onResume() {
