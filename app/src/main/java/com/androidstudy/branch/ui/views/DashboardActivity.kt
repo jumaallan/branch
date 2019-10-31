@@ -13,11 +13,12 @@ import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.ThreadRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
+import com.androidstudy.branch.util.livedata.nonNull
+import com.androidstudy.branch.util.livedata.observe
 import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.content_dashboard.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -47,6 +48,8 @@ class DashboardActivity : AppCompatActivity() {
             vm.getMessageThreads()
         }
 
+        observeLiveData()
+
         vm.fetchThreads().observe(this, Observer {
             setUpViews(it)
         })
@@ -62,7 +65,6 @@ class DashboardActivity : AppCompatActivity() {
         if (messageThreadList.isNullOrEmpty()) {
             recyclerView.visibility = View.GONE
         } else {
-            app.settings.setIsFirstTime(false)
             recyclerView.visibility = View.VISIBLE
 
             val itemDecor =
@@ -87,13 +89,26 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
+    private fun observeLiveData() {
+        vm.getThreadsResponse().nonNull().observe(this) { list ->
+            if (list.isNotEmpty()) {
+                app.settings.setIsFirstTime(false)
+
+                vm.fetchThreads().observe(this, Observer {
+                    setUpViews(it)
+                })
+            }
+        }
+        vm.getThreadsError().nonNull().observe(this) {
+            app.settings.setIsFirstTime(true)
+        }
+    }
+
     private fun logout() {
 
         if (app.settings.isLoggedIn()!!) {
             return
         }
-
-
     }
 
     override fun onResume() {
