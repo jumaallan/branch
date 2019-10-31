@@ -29,4 +29,14 @@ class Settings(
         editor.putBoolean("is_logged_in", isLoggedIn)
         editor.apply()
     }
+
+    fun isFirstTime(): Boolean? {
+        return settings.getBoolean("is_first_time", false)
+    }
+
+    fun setIsFirstTime(isFirstTime: Boolean) {
+        val editor = settings.edit()
+        editor.putBoolean("is_first_time", isFirstTime)
+        editor.apply()
+    }
 }
