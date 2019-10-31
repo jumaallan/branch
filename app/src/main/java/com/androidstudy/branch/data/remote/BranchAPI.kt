@@ -14,5 +14,5 @@ interface BranchAPI {
     fun loginUser(@Body userLogin: UserLogin): Call<UserResponse>
 
     @GET("api/messages")
-    fun getMessages(): List<Chat>
+    suspend fun getMessages(): List<Chat>
 }
