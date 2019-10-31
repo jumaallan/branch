@@ -17,5 +17,8 @@
     <string name="send_message">SEND</string>
     <string name="chat_enter_message">Enter message...</string>
     <string name="button_auth_issue">Need Help?</string>
+    <string name="powered_by">Branch International</string>
+    <string name="report_issue">Report Issue</string>
+    <string name="forgot_pin">Forgot PIN?</string>
 
 </resources>

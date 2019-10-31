@@ -94,4 +94,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
+    fun onForgotPinPressed(view: View) {}
+    fun onReportIssuePressed(view: View) {}
 }

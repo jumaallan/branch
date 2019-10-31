@@ -10,7 +10,7 @@ import retrofit2.http.POST
 
 interface BranchAPI {
 
-    @POST("login")
+    @POST("api/login")
     fun loginUser(@Body userLogin: UserLogin): Call<UserResponse>
 
     @GET("api/messages")

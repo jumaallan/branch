@@ -34,6 +34,7 @@
             android:layout_marginTop="@dimen/margin_image_top"
             android:hint="@string/hint_enter_your_username"
             android:inputType="text"
+            android:text="juma"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivdBranchIconLogin" />
@@ -46,6 +47,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:hint="@string/hint_enter_your_pin"
             android:inputType="textPassword"
+            android:text="branch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
@@ -70,6 +72,58 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/materialButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:text="@string/powered_by"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/textSecondary"
+            app:fontFamily="@font/oxygen_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialButton2"
+            app:layout_constraintVertical_bias="0.84">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bForgotPin"
+                style="@style/underlinedButtonText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="onForgotPinPressed"
+                android:text="@string/forgot_pin" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bReportIssue"
+                style="@style/underlinedButtonText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="onReportIssuePressed"
+                android:text="@string/report_issue" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

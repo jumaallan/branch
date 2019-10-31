@@ -75,6 +75,14 @@
         <item name="backgroundTint">@color/colorAccent</item>
     </style>
 
+    <style name="underlinedButtonText" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="fontFamily">@font/oxygen_bold</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <!--edit texts-->
     <style name="authTextInputEditText">
         <item name="fontFamily">@font/oxygen_bold</item>
