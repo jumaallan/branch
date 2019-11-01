@@ -10,5 +10,5 @@ interface ThreadDao : BaseDao<MessageThread> {
 
     @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
     @Query("SELECT * FROM MessageThread")
-    fun fetchThreads(): List<MessageThread>
+    suspend fun fetchThreads(): List<MessageThread>
 }
