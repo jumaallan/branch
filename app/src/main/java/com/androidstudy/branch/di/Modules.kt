@@ -47,7 +47,7 @@ val retrofitModule = module(override = true) {
 val databaseModule = module {
     single {
         Room.databaseBuilder(androidContext(), BranchDatabase::class.java, "branch")
-            .allowMainThreadQueries().build()
+            .build()
     }
 }
 
