@@ -9,6 +9,6 @@ import com.androidstudy.branch.data.entities.MessageThread
 interface ThreadDao : BaseDao<MessageThread> {
 
     @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
-    @Query("SELECT * FROM MessageThread")
+    @Query("SELECT * FROM MessageThread ORDER BY timestamp DESC")
     fun fetchThreads(): List<MessageThread>
 }

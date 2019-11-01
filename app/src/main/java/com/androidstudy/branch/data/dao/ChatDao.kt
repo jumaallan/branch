@@ -1,18 +1,15 @@
 package com.androidstudy.branch.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Query
-import com.androidstudy.branch.data.entities.Message
-import com.androidstudy.branch.data.entities.StockMessage
+import com.androidstudy.branch.data.entities.ChatMessage
 
 @Dao
-interface ChatDao : BaseDao<Message> {
+interface ChatDao : BaseDao<ChatMessage> {
 
-    @Query("SELECT * FROM Message WHERE thread_id =:thread_id")
-    fun fetchMessagesPerThread(thread_id: String): LiveData<List<Message>>
-
-    @Query("SELECT * FROM StockMessage")
-    fun fetchStockMessages(): LiveData<List<StockMessage>>
+//    @Query("SELECT * FROM ChatMessage WHERE thread_id =:thread_id")
+//    fun fetchMessagesPerThread(thread_id: String): LiveData<List<ChatMessage>>
+//
+//    @Query("SELECT * FROM StockMessage")
+//    fun fetchStockMessages(): LiveData<List<StockMessage>>
 
 }

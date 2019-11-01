@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(indices = [Index(value = ["timestamp"], unique = true)])
-class Message(
-    @PrimaryKey
+@Entity(indices = [Index(value = ["body"], unique = true)])
+class ChatMessage(
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     var id: Int,
     var thread_id: Int,

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
-import com.androidstudy.branch.data.entities.Message
+import com.androidstudy.branch.data.entities.ChatMessage
 import com.androidstudy.branch.data.entities.StockMessage
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
@@ -35,8 +35,8 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
-    private fun setUpViews(messageList: List<Message>?) {
-        if (messageList.isNullOrEmpty()) {
+    private fun setUpViews(chatMessageList: List<ChatMessage>?) {
+        if (chatMessageList.isNullOrEmpty()) {
             recyclerViewChat.visibility = View.GONE
         } else {
 //            recyclerViewChat.visibility = View.VISIBLE
@@ -52,7 +52,7 @@ class ChatActivity : AppCompatActivity() {
 //            recyclerViewChat.layoutManager = layoutManager
 //            recyclerViewChat.addItemDecoration(itemDecor)
 //
-//            val customerAdapter = ChatRecyclerViewAdapter(messageList)
+//            val customerAdapter = ChatRecyclerViewAdapter(chatMessageList)
 //            recyclerViewChat.adapter = customerAdapter
         }
     }
