@@ -10,5 +10,5 @@ interface StockMessageDao : BaseDao<StockMessage> {
 
     @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
     @Query("SELECT * FROM StockMessage")
-    suspend fun fetchStockMessage(): List<StockMessage>
+    fun fetchStockMessage(): List<StockMessage>
 }

@@ -2,7 +2,9 @@ package com.androidstudy.branch.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.androidstudy.branch.data.dao.ChatDao
 import com.androidstudy.branch.data.dao.ThreadDao
+import com.androidstudy.branch.data.entities.Message
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.data.remote.BranchAPI
@@ -13,9 +15,9 @@ import java.io.IOException
 
 class ThreadRepository(
     retrofit: Retrofit,
-    threadDao: ThreadDao
+    private var threadDao: ThreadDao,
+    private var chatDao: ChatDao
 ) {
-    private var dao = threadDao
     private var network = retrofit
     private val apiService = network.create(BranchAPI::class.java)
 
@@ -39,7 +41,7 @@ class ThreadRepository(
     }
 
     fun fetchThreads(): LiveData<List<MessageThread>> = liveData {
-        emit(dao.fetchThreads())
+        emit(threadDao.fetchThreads())
     }
 
     private fun saveThreads(chatList: List<Chat>) {
@@ -53,7 +55,17 @@ class ThreadRepository(
                 chat.status,
                 chat.timestamp
             )
-            dao.insert(messageThread)
+            threadDao.insert(messageThread)
+
+            val message = Message(
+                0,
+                chat.thread_id,
+                chat.user_id,
+                chat.body,
+                chat.timestamp,
+                chat.agent_id
+            )
+            chatDao.insert(message)
         }
     }
 }

@@ -30,7 +30,7 @@ val retrofitModule = module(override = true) {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("X-Branch-Auth-Token", "VD3OLfqb8cia2EoVu1MmQg")
+                    .addHeader("X-Branch-Auth-Token", "lGVCdNoO4DQwr_wifEYrOg")
                     .build()
                 chain.proceed(request)
             }.addInterceptor(interceptor).build()
@@ -47,6 +47,7 @@ val retrofitModule = module(override = true) {
 val databaseModule = module {
     single {
         Room.databaseBuilder(androidContext(), BranchDatabase::class.java, "branch")
+            .allowMainThreadQueries()
             .build()
     }
 }
@@ -68,7 +69,7 @@ val chatRepoModule = module {
 }
 
 val threadRepoModule = module {
-    single { ThreadRepository(get(), get()) }
+    single { ThreadRepository(get(), get(), get()) }
 }
 
 val stockMessageRepoModule = module {

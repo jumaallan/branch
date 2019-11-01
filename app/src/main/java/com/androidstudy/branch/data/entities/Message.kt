@@ -2,9 +2,10 @@ package com.androidstudy.branch.data.entities
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(indices = [Index(value = ["timestamp"], unique = true)])
 class Message(
     @PrimaryKey
     @NonNull
