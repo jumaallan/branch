@@ -1,5 +1,6 @@
 package com.androidstudy.branch.ui.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -86,6 +87,8 @@ class DashboardActivity : AppCompatActivity() {
                 override fun onItemClick(v: View, position: Int) {
                     val messageThread = messageThreadList[position]
                     toast(messageThread.body)
+
+                    startActivity(Intent(applicationContext, ChatActivity::class.java))
 
                     //TODO :: Move to the chat page, and pull all chats with the thread id, isolate the Branch ones - then show stock messages as well
                 }
