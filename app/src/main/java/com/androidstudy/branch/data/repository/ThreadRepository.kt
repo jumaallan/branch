@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.androidstudy.branch.data.dao.ChatDao
 import com.androidstudy.branch.data.dao.ThreadDao
-import com.androidstudy.branch.data.entities.ChatMessage
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.model.Chat
 import com.androidstudy.branch.data.remote.BranchAPI
@@ -56,21 +55,24 @@ class ThreadRepository(
                 chat.timestamp
             )
             threadDao.insert(messageThread)
-
-            val agentId: String = if (chat.agent_id.isEmpty()) {
-                "0"
-            } else {
-                chat.agent_id
-            }
-            val message = ChatMessage(
-                0,
-                chat.thread_id,
-                chat.user_id,
-                chat.body,
-                chat.timestamp,
-                agentId
-            )
-            chatDao.insert(message)
+            saveMessages(messageThread)
         }
+    }
+
+    private fun saveMessages(chat: MessageThread) {
+//        val agentId: String = if (chat.agent_id.isEmpty()) {
+//            "0"
+//        } else {
+//            chat.agent_id
+//        }
+//        val message = ChatMessage(
+//            0,
+//            chat.thread_id,
+//            chat.user_id,
+//            chat.body,
+//            chat.timestamp,
+//            agentId
+//        )
+//        chatDao.insert(message)
     }
 }

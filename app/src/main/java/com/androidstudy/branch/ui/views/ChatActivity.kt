@@ -23,16 +23,18 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        tvToolBarTitle.text = "Juma Allan"
+        val threadId = intent.getStringExtra("thread_id")
+        val userId = intent.getStringExtra("user_id")
 
-        vm.fetchMessagesPerThread("").observe(this, Observer {
+        tvToolBarTitle.text = userId
+
+        vm.fetchMessagesPerThread(threadId).observe(this, Observer {
             setUpViews(it)
         })
 
         vm.fetchStockMessages().observe(this, Observer {
             setUpStockMessageViews(it)
         })
-
     }
 
     private fun setUpViews(chatMessageList: List<ChatMessage>?) {

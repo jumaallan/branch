@@ -17,7 +17,6 @@ import com.androidstudy.branch.ui.viewmodel.StockMessageViewModel
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
 import com.androidstudy.branch.util.livedata.nonNull
 import com.androidstudy.branch.util.livedata.observe
-import com.androidstudy.branch.util.toast
 import kotlinx.android.synthetic.main.content_dashboard.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -86,9 +85,11 @@ class DashboardActivity : AppCompatActivity() {
                 CustomItemClickListener {
                 override fun onItemClick(v: View, position: Int) {
                     val messageThread = messageThreadList[position]
-                    toast(messageThread.body)
 
-                    startActivity(Intent(applicationContext, ChatActivity::class.java))
+                    val intent = Intent(this@DashboardActivity, ChatActivity::class.java)
+                    intent.putExtra("thread_id", messageThread.thread_id.toString())
+                    intent.putExtra("user_id", messageThread.user_id)
+                    startActivity(intent)
 
                     //TODO :: Move to the chat page, and pull all chats with the thread id, isolate the Branch ones - then show stock messages as well
                 }
