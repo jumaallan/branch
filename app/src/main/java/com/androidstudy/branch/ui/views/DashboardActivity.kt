@@ -61,6 +61,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setUp() {
         app = application as Branch
+        app.settings.setIsFirstTime(true)
 //        signOutDialog = SignOutDialog.newInstance({ dialog -> logout() })
     }
 
@@ -90,8 +91,6 @@ class DashboardActivity : AppCompatActivity() {
                     intent.putExtra("thread_id", messageThread.thread_id.toString())
                     intent.putExtra("user_id", messageThread.user_id)
                     startActivity(intent)
-
-                    //TODO :: Move to the chat page, and pull all chats with the thread id, isolate the Branch ones - then show stock messages as well
                 }
             })
             recyclerView.adapter = customerAdapter

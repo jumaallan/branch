@@ -5,14 +5,12 @@ import androidx.room.TypeConverters
 import com.androidstudy.branch.data.dao.ChatDao
 import com.androidstudy.branch.data.dao.StockMessageDao
 import com.androidstudy.branch.data.dao.ThreadDao
-import com.androidstudy.branch.data.entities.ChatMessage
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.entities.StockMessage
 
 @androidx.room.Database(
     entities = [
         MessageThread::class,
-        ChatMessage::class,
         StockMessage::class
     ],
     version = 1,

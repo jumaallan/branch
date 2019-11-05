@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
-import com.androidstudy.branch.data.entities.ChatMessage
 import com.androidstudy.branch.data.entities.StockMessage
+import com.androidstudy.branch.data.model.ChatMessage
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel

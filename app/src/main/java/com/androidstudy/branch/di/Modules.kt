@@ -30,7 +30,7 @@ val retrofitModule = module(override = true) {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("X-Branch-Auth-Token", "zf-OB5A40_gXa-GuP7TIkg")
+                    .addHeader("X-Branch-Auth-Token", "gvuBHlXchtPSuSeLhK6T_A")
                     .build()
                 chain.proceed(request)
             }.addInterceptor(interceptor).build()
@@ -81,7 +81,7 @@ val threadViewModel = module {
 }
 
 val chatViewModel = module {
-    viewModel { ChatViewModel(get()) }
+    viewModel { ChatViewModel(get(), get()) }
 }
 
 val stockMessageViewModel = module {

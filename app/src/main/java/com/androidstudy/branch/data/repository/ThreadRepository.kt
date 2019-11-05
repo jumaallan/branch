@@ -46,33 +46,21 @@ class ThreadRepository(
     private fun saveThreads(chatList: List<Chat>) {
 
         for (chat in chatList) {
+            var agentId: String = if (chat.agent_id.isNullOrEmpty()) {
+                "0"
+            } else {
+                chat.agent_id
+            }
             val messageThread = MessageThread(
                 0,
                 chat.thread_id,
                 chat.user_id,
                 chat.body,
                 chat.status,
+                agentId,
                 chat.timestamp
             )
             threadDao.insert(messageThread)
-            saveMessages(messageThread)
         }
-    }
-
-    private fun saveMessages(chat: MessageThread) {
-//        val agentId: String = if (chat.agent_id.isEmpty()) {
-//            "0"
-//        } else {
-//            chat.agent_id
-//        }
-//        val message = ChatMessage(
-//            0,
-//            chat.thread_id,
-//            chat.user_id,
-//            chat.body,
-//            chat.timestamp,
-//            agentId
-//        )
-//        chatDao.insert(message)
     }
 }

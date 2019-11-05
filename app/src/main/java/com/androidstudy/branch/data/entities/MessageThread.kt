@@ -2,10 +2,9 @@ package com.androidstudy.branch.data.entities
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(indices = [Index(value = ["thread_id"], unique = true)])
+@Entity
 class MessageThread(
     @PrimaryKey(autoGenerate = true)
     @NonNull
@@ -14,5 +13,6 @@ class MessageThread(
     var user_id: String,
     var body: String,
     var status: String,
+    var agent_id: String,
     var timestamp: String
 )

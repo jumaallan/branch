@@ -2,8 +2,7 @@ package com.androidstudy.branch.data.repository
 
 import androidx.lifecycle.LiveData
 import com.androidstudy.branch.data.dao.ChatDao
-import com.androidstudy.branch.data.entities.ChatMessage
-import com.androidstudy.branch.data.entities.StockMessage
+import com.androidstudy.branch.data.model.ChatMessage
 import retrofit2.Retrofit
 
 class ChatRepository(retrofit: Retrofit, chatDao: ChatDao) {
@@ -13,10 +12,6 @@ class ChatRepository(retrofit: Retrofit, chatDao: ChatDao) {
 
     fun fetchMessagesPerThread(thread_id: String): LiveData<List<ChatMessage>> {
         return dao.fetchMessagesPerThread(thread_id)
-    }
-
-    fun fetchStockMessages(): LiveData<List<StockMessage>> {
-        return dao.fetchStockMessages()
     }
 }
 
