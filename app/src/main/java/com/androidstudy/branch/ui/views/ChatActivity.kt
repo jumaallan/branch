@@ -2,18 +2,22 @@ package com.androidstudy.branch.ui.views
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.entities.StockMessage
 import com.androidstudy.branch.data.model.ChatMessage
+import com.androidstudy.branch.ui.adapter.ChatRecyclerViewAdapter
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
 import kotlinx.android.synthetic.main.chat_toolbar.*
 import kotlinx.android.synthetic.main.content_chat.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class ChatActivity : AppCompatActivity() {
 
@@ -35,27 +39,51 @@ class ChatActivity : AppCompatActivity() {
         vm.fetchStockMessages().observe(this, Observer {
             setUpStockMessageViews(it)
         })
+
+        buttonSendMessage.setOnClickListener {
+            validateMessage()
+        }
+    }
+
+    private fun validateMessage() {
+        var message = editTextMessageBody.text.toString().trim()
+
+        if (message.isNullOrEmpty()) {
+            editTextMessageBody.error = "Write a message"
+            return
+        }
+
+        sendMessage()
+    }
+
+    private fun sendMessage() {
+
     }
 
     private fun setUpViews(chatMessageList: List<ChatMessage>?) {
         if (chatMessageList.isNullOrEmpty()) {
             recyclerViewChat.visibility = View.GONE
         } else {
-//            recyclerViewChat.visibility = View.VISIBLE
-//
-//            val itemDecor =
-//                DividerItemDecoration(this, LinearLayout.VERTICAL)
-//            val layoutManager =
-//                LinearLayoutManager(
-//                    this,
-//                    LinearLayoutManager.VERTICAL,
-//                    false
-//                )
-//            recyclerViewChat.layoutManager = layoutManager
-//            recyclerViewChat.addItemDecoration(itemDecor)
-//
-//            val customerAdapter = ChatRecyclerViewAdapter(chatMessageList)
-//            recyclerViewChat.adapter = customerAdapter
+
+            Timber.d("Chats " + chatMessageList.size)
+            chatMessageList.forEach {
+                it.thread_id
+            }
+            recyclerViewChat.visibility = View.VISIBLE
+
+            val itemDecor =
+                DividerItemDecoration(this, LinearLayout.VERTICAL)
+            val layoutManager =
+                LinearLayoutManager(
+                    this,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+            recyclerViewChat.layoutManager = layoutManager
+            recyclerViewChat.addItemDecoration(itemDecor)
+
+            val customerAdapter = ChatRecyclerViewAdapter(chatMessageList)
+            recyclerViewChat.adapter = customerAdapter
         }
     }
 
@@ -80,5 +108,4 @@ class ChatActivity : AppCompatActivity() {
             }
         }
     }
-
 }

@@ -56,7 +56,6 @@ class DashboardActivity : AppCompatActivity() {
         threadViewModel.fetchThreads().observe(this, Observer {
             setUpViews(it)
         })
-
     }
 
     private fun setUp() {
