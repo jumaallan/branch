@@ -65,11 +65,11 @@ val stockMessageDaoModule = module {
 }
 
 val chatRepoModule = module {
-    single { ChatRepository(get(), get()) }
+    single { ChatRepository(get(), get(), get()) }
 }
 
 val threadRepoModule = module {
-    single { ThreadRepository(get(), get(), get()) }
+    single { ThreadRepository(get(), get()) }
 }
 
 val stockMessageRepoModule = module {

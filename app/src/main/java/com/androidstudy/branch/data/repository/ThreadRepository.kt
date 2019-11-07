@@ -2,7 +2,6 @@ package com.androidstudy.branch.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.androidstudy.branch.data.dao.ChatDao
 import com.androidstudy.branch.data.dao.ThreadDao
 import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.model.Chat
@@ -14,8 +13,7 @@ import java.io.IOException
 
 class ThreadRepository(
     retrofit: Retrofit,
-    private var threadDao: ThreadDao,
-    private var chatDao: ChatDao
+    private var threadDao: ThreadDao
 ) {
     private var network = retrofit
     private val apiService = network.create(BranchAPI::class.java)
@@ -46,7 +44,7 @@ class ThreadRepository(
     private fun saveThreads(chatList: List<Chat>) {
 
         for (chat in chatList) {
-            var agentId: String = if (chat.agent_id.isNullOrEmpty()) {
+            val agentId: String = if (chat.agent_id.isEmpty()) {
                 "0"
             } else {
                 chat.agent_id

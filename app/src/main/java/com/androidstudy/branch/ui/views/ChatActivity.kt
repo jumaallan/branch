@@ -19,15 +19,17 @@ import kotlinx.android.synthetic.main.content_chat.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class ChatActivity : AppCompatActivity() {
 
     private val vm: ChatViewModel by viewModel()
+    private lateinit var threadId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        val threadId = intent.getStringExtra("thread_id")
+        threadId = intent.getStringExtra("thread_id")
         val userId = intent.getStringExtra("user_id")
 
         tvToolBarTitle.text = userId
@@ -46,18 +48,18 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun validateMessage() {
-        var message = editTextMessageBody.text.toString().trim()
+        val message = editTextMessageBody.text.toString().trim()
 
-        if (message.isNullOrEmpty()) {
+        if (message.isEmpty()) {
             editTextMessageBody.error = "Write a message"
             return
         }
 
-        sendMessage()
+        sendMessage(message)
     }
 
-    private fun sendMessage() {
-
+    private fun sendMessage(message: String) {
+        vm.sendMessage(threadId, message)
     }
 
     private fun setUpViews(chatMessageList: List<ChatMessage>?) {
