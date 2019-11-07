@@ -95,8 +95,6 @@ dependencies {
 
     // Room Database
     implementation deps.room.runtime
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt deps.room.core
     kapt deps.room.roomCompiler
 
@@ -137,6 +135,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0-alpha02'
 }
 
 apply plugin: 'com.google.gms.google-services'
