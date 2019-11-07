@@ -13,6 +13,11 @@ At Branch, our first value is being passionate about our customers. This include
 
 Our customer service agents respond to inbound inquiries using our web-based app. In this project, the challenge is to build a simple mobile version of this app that could be used to respond to customer inquiries while on the go.
 
+### Still Work In Progress
+
+* No Unit Tests yet on the Code
+* A few Instrumentation Tests are included 
+
 ### Credits
 
 All the Vector Images used are downloaded for FREE from [freepik](https://www.freepik.com). The images are Free for personal and commercial purpose with attribution
