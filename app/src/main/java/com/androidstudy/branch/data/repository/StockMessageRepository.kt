@@ -11,11 +11,9 @@ import retrofit2.Retrofit
 import java.io.IOException
 
 class StockMessageRepository(
-    retrofit: Retrofit,
-    stockMessageDao: StockMessageDao
+    private var network: Retrofit,
+    private var stockMessageDao: StockMessageDao
 ) {
-    private var dao = stockMessageDao
-    private var network = retrofit
     private val apiService = network.create(BranchAPI::class.java)
 
     suspend fun fetchStockMessage() = safeApiCall(
@@ -38,13 +36,13 @@ class StockMessageRepository(
     }
 
     fun fetchStockMessages(): LiveData<List<StockMessage>> = liveData {
-        emit(dao.fetchStockMessage())
+        emit(stockMessageDao.fetchStockMessage())
     }
 
     private fun saveStockMessages(stockMessageList: List<StockMessage>) {
 
         for (stockMessage in stockMessageList) {
-            dao.insert(stockMessage)
+            stockMessageDao.insert(stockMessage)
         }
     }
 }

@@ -12,10 +12,10 @@ import retrofit2.Retrofit
 import java.io.IOException
 
 class ThreadRepository(
-    retrofit: Retrofit,
+    private var network: Retrofit,
     private var threadDao: ThreadDao
 ) {
-    private var network = retrofit
+
     private val apiService = network.create(BranchAPI::class.java)
 
     suspend fun fetchMessageThreads() = safeApiCall(
