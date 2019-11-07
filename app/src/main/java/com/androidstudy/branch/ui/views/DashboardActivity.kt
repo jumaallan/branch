@@ -65,6 +65,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun setUpViews(messageThreadList: List<MessageThread>?) {
+        swipeRefreshLayout.isRefreshing = false
         if (messageThreadList.isNullOrEmpty()) {
             recyclerView.visibility = View.GONE
         } else {
@@ -92,6 +93,7 @@ class DashboardActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             })
+
             recyclerView.adapter = customerAdapter
         }
     }
@@ -99,6 +101,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun observeFirstSyncLiveData() {
         threadViewModel.getThreadsResponse().nonNull().observe(this) { list ->
             if (list.isNotEmpty()) {
+                swipeRefreshLayout.isRefreshing = false
                 app.settings.setIsFirstTime(false)
 
                 threadViewModel.fetchThreads().observe(this, Observer {
@@ -107,22 +110,23 @@ class DashboardActivity : AppCompatActivity() {
             }
         }
         threadViewModel.getThreadsError().nonNull().observe(this) {
+            swipeRefreshLayout.isRefreshing = false
             app.settings.setIsFirstTime(true)
         }
 
         stockMessageViewModel.getStockMessageResponse().nonNull().observe(this) { list ->
             if (list.isNotEmpty()) {
+                swipeRefreshLayout.isRefreshing = false
                 app.settings.setIsFirstTime(false)
             }
         }
         stockMessageViewModel.getStockMessageError().nonNull().observe(this) {
+            swipeRefreshLayout.isRefreshing = false
             app.settings.setIsFirstTime(true)
         }
-
     }
 
     private fun logout() {
-
         if (app.settings.isLoggedIn()!!) {
             return
         }

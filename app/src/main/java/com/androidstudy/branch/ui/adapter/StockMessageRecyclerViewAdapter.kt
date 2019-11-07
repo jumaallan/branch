@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.entities.StockMessage
 
+@Suppress("DEPRECATION")
 internal class StockMessageRecyclerViewAdapter(
     private val stockMessageList: List<StockMessage>,
     private var listener: CustomItemClickListener

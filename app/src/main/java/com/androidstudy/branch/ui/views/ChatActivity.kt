@@ -2,10 +2,8 @@ package com.androidstudy.branch.ui.views
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidstudy.branch.R
 import com.androidstudy.branch.data.entities.StockMessage
@@ -60,6 +58,7 @@ class ChatActivity : AppCompatActivity() {
 
     private fun sendMessage(message: String) {
         vm.sendMessage(threadId, message)
+        editTextMessageBody.setText("")
     }
 
     private fun setUpViews(chatMessageList: List<ChatMessage>?) {
@@ -73,8 +72,6 @@ class ChatActivity : AppCompatActivity() {
             }
             recyclerViewChat.visibility = View.VISIBLE
 
-            val itemDecor =
-                DividerItemDecoration(this, LinearLayout.VERTICAL)
             val layoutManager =
                 LinearLayoutManager(
                     this,
@@ -82,7 +79,6 @@ class ChatActivity : AppCompatActivity() {
                     false
                 )
             recyclerViewChat.layoutManager = layoutManager
-            recyclerViewChat.addItemDecoration(itemDecor)
 
             val customerAdapter = ChatRecyclerViewAdapter(chatMessageList)
             recyclerViewChat.adapter = customerAdapter
