@@ -30,5 +30,6 @@
         \n\n&#8226; Your can get message notifications on the go.
         \n\n&#8226; App preferences will be persisted across app installs.
     </string>
+    <string name="close_thread">Close</string>
 
 </resources>

@@ -17,16 +17,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textMessageName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toRightOf="@+id/imageMessageProfile"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Rob Brambley" />
-
-    <TextView
         style="@style/chatTextViews"
         android:id="@+id/textMessageBody"
         android:layout_width="0dp"
@@ -35,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@+id/imageMessageProfile"
-        app:layout_constraintTop_toBottomOf="@+id/textMessageName"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Hey, hello. How can we be of help today?" />
 
     <TextView

@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 import java.io.IOException
 
 class StockMessageRepository(
-    private var network: Retrofit,
+    network: Retrofit,
     private var stockMessageDao: StockMessageDao
 ) {
     private val apiService = network.create(BranchAPI::class.java)

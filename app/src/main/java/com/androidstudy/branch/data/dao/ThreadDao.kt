@@ -11,4 +11,7 @@ interface ThreadDao : BaseDao<MessageThread> {
     @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
     @Query("SELECT * FROM MessageThread GROUP BY thread_id ORDER BY timestamp DESC")
     fun fetchThreads(): List<MessageThread>
+
+    @Query("UPDATE MessageThread SET status =:threadStatus WHERE thread_id =:threadId")
+    fun closeMessageThread(threadStatus: String, threadId: Int)
 }

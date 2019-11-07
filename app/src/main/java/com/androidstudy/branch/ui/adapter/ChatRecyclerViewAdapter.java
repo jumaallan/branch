@@ -96,12 +96,10 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter {
             super(itemView);
             messageText = itemView.findViewById(R.id.textMessageBody);
             timeText = itemView.findViewById(R.id.textMessageTime);
-            nameText = itemView.findViewById(R.id.textMessageName);
         }
 
         void bind(ChatMessage message) {
             messageText.setText(message.getBody());
-            nameText.setText(message.getUser_id());
             timeText.setText(Utils.Companion.getFormattedUpdateTime(message.getTimestamp()));
         }
     }

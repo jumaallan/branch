@@ -1,5 +1,6 @@
 package com.androidstudy.branch.ui.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ import com.androidstudy.branch.ui.adapter.ChatRecyclerViewAdapter
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
+import com.androidstudy.branch.util.livedata.nonNull
+import com.androidstudy.branch.util.livedata.observe
 import kotlinx.android.synthetic.main.chat_toolbar.*
 import kotlinx.android.synthetic.main.content_chat.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,16 +46,22 @@ class ChatActivity : AppCompatActivity() {
         buttonSendMessage.setOnClickListener {
             validateMessage()
         }
+
+        buttonCloseThread.setOnClickListener {
+            closeMessageThread()
+        }
+
+        vm.getCloseThreadResponse().nonNull().observe(this) {
+            startActivity(Intent(applicationContext, DashboardActivity::class.java))
+        }
     }
 
     private fun validateMessage() {
         val message = editTextMessageBody.text.toString().trim()
-
         if (message.isEmpty()) {
             editTextMessageBody.error = "Write a message"
             return
         }
-
         sendMessage(message)
     }
 
@@ -61,11 +70,14 @@ class ChatActivity : AppCompatActivity() {
         editTextMessageBody.setText("")
     }
 
+    private fun closeMessageThread() {
+        vm.closeMessageThread(threadId)
+    }
+
     private fun setUpViews(chatMessageList: List<ChatMessage>?) {
         if (chatMessageList.isNullOrEmpty()) {
             recyclerViewChat.visibility = View.GONE
         } else {
-
             Timber.d("Chats " + chatMessageList.size)
             chatMessageList.forEach {
                 it.thread_id
@@ -82,6 +94,7 @@ class ChatActivity : AppCompatActivity() {
 
             val customerAdapter = ChatRecyclerViewAdapter(chatMessageList)
             recyclerViewChat.adapter = customerAdapter
+            recyclerViewChat.smoothScrollToPosition(chatMessageList.size - 1)
         }
     }
 
@@ -89,7 +102,6 @@ class ChatActivity : AppCompatActivity() {
         if (stockMessageList.isNullOrEmpty()) {
             recyclerViewStockMessage.visibility = View.GONE
         } else {
-
             val stockMessageRecyclerViewAdapter =
                 StockMessageRecyclerViewAdapter(stockMessageList, object :
                     CustomItemClickListener {
@@ -104,6 +116,14 @@ class ChatActivity : AppCompatActivity() {
                 layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        vm.getCloseThreadResponse().nonNull().observe(this) {
+            startActivity(Intent(applicationContext, DashboardActivity::class.java))
         }
     }
 }

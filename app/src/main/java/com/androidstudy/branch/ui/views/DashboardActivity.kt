@@ -60,7 +60,6 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setUp() {
         app = application as Branch
-        app.settings.setIsFirstTime(true)
 //        signOutDialog = SignOutDialog.newInstance({ dialog -> logout() })
     }
 
@@ -112,6 +111,10 @@ class DashboardActivity : AppCompatActivity() {
         threadViewModel.getThreadsError().nonNull().observe(this) {
             swipeRefreshLayout.isRefreshing = false
             app.settings.setIsFirstTime(true)
+
+            threadViewModel.fetchThreads().observe(this, Observer {
+                setUpViews(it)
+            })
         }
 
         stockMessageViewModel.getStockMessageResponse().nonNull().observe(this) { list ->

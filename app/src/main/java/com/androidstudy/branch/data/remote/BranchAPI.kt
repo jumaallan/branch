@@ -21,4 +21,7 @@ interface BranchAPI {
 
     @GET("api/stock_messages")
     suspend fun getStockMessages(): Response<List<StockMessage>>
+
+    @POST("api/close_thread")
+    suspend fun closeThread(@Body closeThread: CloseThread): Response<Void>
 }

@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 import java.io.IOException
 
 class ThreadRepository(
-    private var network: Retrofit,
+    network: Retrofit,
     private var threadDao: ThreadDao
 ) {
 

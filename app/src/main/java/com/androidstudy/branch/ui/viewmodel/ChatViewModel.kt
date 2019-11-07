@@ -23,6 +23,9 @@ class ChatViewModel(
     private val chatMediatorLiveData = NonNullMediatorLiveData<ChatResponse>()
     private val chatError = NonNullMediatorLiveData<String>()
 
+    private val closeThreadMediatorLiveData = NonNullMediatorLiveData<Void>()
+    private val closeThreadError = NonNullMediatorLiveData<String>()
+
     fun sendMessage(thread_id: String, body: String) {
         viewModelScope.launch {
             when (val value = chatRepo.sendMessage(thread_id, body)) {
@@ -35,6 +38,19 @@ class ChatViewModel(
     fun getChatResponse(): LiveData<ChatResponse> = chatMediatorLiveData
 
     fun getChatError(): LiveData<String> = chatError
+
+    fun closeMessageThread(thread_id: String) {
+        viewModelScope.launch {
+            when (val value = chatRepo.closeThread(thread_id)) {
+                is NetworkResult.Success -> closeThreadMediatorLiveData.postValue(value.data)
+                is NetworkResult.Error -> closeThreadError.postValue(value.exception.message)
+            }
+        }
+    }
+
+    fun getCloseThreadResponse(): LiveData<Void> = closeThreadMediatorLiveData
+
+    fun getCloseThreadError(): LiveData<String> = closeThreadError
 
     fun fetchMessagesPerThread(thread_id: String): LiveData<List<ChatMessage>> {
         return chatRepo.fetchMessagesPerThread(thread_id)

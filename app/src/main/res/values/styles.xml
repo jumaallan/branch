@@ -112,7 +112,7 @@
 
     <style name="chatTextViews">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:padding">4dp</item>
     </style>
 

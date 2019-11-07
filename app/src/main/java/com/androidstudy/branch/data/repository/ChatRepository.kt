@@ -7,6 +7,7 @@ import com.androidstudy.branch.data.entities.MessageThread
 import com.androidstudy.branch.data.model.ChatMessage
 import com.androidstudy.branch.data.model.ChatRequest
 import com.androidstudy.branch.data.model.ChatResponse
+import com.androidstudy.branch.data.model.CloseThread
 import com.androidstudy.branch.data.remote.BranchAPI
 import com.androidstudy.branch.util.NetworkResult
 import com.androidstudy.branch.util.safeApiCall
@@ -14,7 +15,7 @@ import retrofit2.Retrofit
 import java.io.IOException
 
 class ChatRepository(
-    private var network: Retrofit,
+    network: Retrofit,
     private var chatDao: ChatDao,
     private var threadDao: ThreadDao
 ) {
@@ -23,6 +24,11 @@ class ChatRepository(
 
     suspend fun sendMessage(thread_id: String, body: String) = safeApiCall(
         call = { postMessageToServer(thread_id, body) },
+        errorMessage = "An error occurred"
+    )
+
+    suspend fun closeThread(thread_id: String) = safeApiCall(
+        call = { closeMessageThread(thread_id) },
         errorMessage = "An error occurred"
     )
 
@@ -43,8 +49,28 @@ class ChatRepository(
                 }
                 NetworkResult.Success(response.body()!!)
             }
-            else -> NetworkResult.Error(IOException("Could not get message threads"))
+            else -> NetworkResult.Error(IOException("Could not save message"))
         }
+    }
+
+    private suspend fun closeMessageThread(
+        thread_id: String
+    ): NetworkResult<Void> {
+        val closeThread = CloseThread(
+            thread_id
+        )
+        val response = apiService.closeThread(closeThread)
+        return when {
+            response.isSuccessful -> {
+                updateThreadStatus(thread_id)
+                NetworkResult.Success(response.body()!!)
+            }
+            else -> NetworkResult.Error(IOException("Could not close message thread"))
+        }
+    }
+
+    private fun updateThreadStatus(threadId: String) {
+        threadDao.closeMessageThread("status_closed", threadId.toInt())
     }
 
     private fun saveChat(chat: ChatResponse) {
