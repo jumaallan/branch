@@ -14,6 +14,7 @@ import com.androidstudy.branch.util.safeApiCall
 import retrofit2.Retrofit
 import java.io.IOException
 
+@Suppress("UselessCallOnNotNull")
 class ChatRepository(
     network: Retrofit,
     private var chatDao: ChatDao,
@@ -74,7 +75,7 @@ class ChatRepository(
     }
 
     private fun saveChat(chat: ChatResponse) {
-        val agentId: String = if (chat.agent_id.isEmpty()) {
+        val agentId: String = if (chat.agent_id.isNullOrEmpty()) {
             "0"
         } else {
             chat.agent_id

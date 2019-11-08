@@ -83,6 +83,8 @@ class LoginActivity : AppCompatActivity() {
                     app.settings.setBranchAuthToken(userResponse!!.auth_token)
 
                     startActivity(Intent(applicationContext, DashboardActivity::class.java))
+                    finish()
+
                 } else {
                     toast("An error occurred")
                 }
