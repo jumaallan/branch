@@ -27,8 +27,6 @@ class DashboardActivity : AppCompatActivity() {
     private val stockMessageViewModel: StockMessageViewModel by viewModel()
     private lateinit var app: Branch
 
-    private var signOutDialog: SignOutDialog? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -36,7 +34,7 @@ class DashboardActivity : AppCompatActivity() {
         setUp()
 
         imageViewUserAvatar.setOnClickListener {
-            signOutDialog?.show(supportFragmentManager, "profile")
+
         }
 
         swipeRefreshLayout.setColorSchemeResources(
@@ -60,7 +58,6 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setUp() {
         app = application as Branch
-//        signOutDialog = SignOutDialog.newInstance({ dialog -> logout() })
     }
 
     private fun setUpViews(messageThreadList: List<MessageThread>?) {
