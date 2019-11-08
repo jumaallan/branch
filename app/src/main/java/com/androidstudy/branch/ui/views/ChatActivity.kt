@@ -13,8 +13,6 @@ import com.androidstudy.branch.ui.adapter.ChatRecyclerViewAdapter
 import com.androidstudy.branch.ui.adapter.CustomItemClickListener
 import com.androidstudy.branch.ui.adapter.StockMessageRecyclerViewAdapter
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
-import com.androidstudy.branch.util.livedata.nonNull
-import com.androidstudy.branch.util.livedata.observe
 import kotlinx.android.synthetic.main.chat_toolbar.*
 import kotlinx.android.synthetic.main.content_chat.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,9 +49,11 @@ class ChatActivity : AppCompatActivity() {
             closeMessageThread()
         }
 
-        vm.getCloseThreadResponse().nonNull().observe(this) {
-            startActivity(Intent(applicationContext, DashboardActivity::class.java))
-        }
+        vm.getCloseThreadResponse().observe(this, Observer {
+            if (it == null) {
+                startActivity(Intent(applicationContext, DashboardActivity::class.java))
+            }
+        })
     }
 
     private fun validateMessage() {
@@ -122,8 +122,10 @@ class ChatActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        vm.getCloseThreadResponse().nonNull().observe(this) {
-            startActivity(Intent(applicationContext, DashboardActivity::class.java))
-        }
+        vm.getCloseThreadResponse().observe(this, Observer {
+            if (it == null) {
+                startActivity(Intent(applicationContext, DashboardActivity::class.java))
+            }
+        })
     }
 }
