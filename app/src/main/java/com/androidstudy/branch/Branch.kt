@@ -1,6 +1,7 @@
 package com.androidstudy.branch
 
 import android.app.Application
+import android.content.Context
 import android.os.Build
 import androidx.annotation.Nullable
 import com.androidstudy.branch.di.*
@@ -22,9 +23,15 @@ class Branch : Application() {
         settings = Settings(applicationContext)
         mInstance = this
 
+        Branch.appContext = applicationContext
+
         initKoin()
         initTimber()
         initStetho()
+    }
+
+    companion object {
+        lateinit var appContext: Context
     }
 
     private fun initStetho() {

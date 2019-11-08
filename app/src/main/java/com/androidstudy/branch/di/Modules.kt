@@ -6,6 +6,7 @@ import com.androidstudy.branch.data.BranchDatabase
 import com.androidstudy.branch.data.repository.ChatRepository
 import com.androidstudy.branch.data.repository.StockMessageRepository
 import com.androidstudy.branch.data.repository.ThreadRepository
+import com.androidstudy.branch.network.AuthInterceptor
 import com.androidstudy.branch.ui.viewmodel.ChatViewModel
 import com.androidstudy.branch.ui.viewmodel.StockMessageViewModel
 import com.androidstudy.branch.ui.viewmodel.ThreadViewModel
@@ -28,15 +29,12 @@ val retrofitModule = module(override = true) {
         }
 
         val client = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val request = chain.request().newBuilder()
-                    .addHeader("X-Branch-Auth-Token", "gvuBHlXchtPSuSeLhK6T_A")
-                    .build()
-                chain.proceed(request)
-            }.addInterceptor(interceptor).build()
+            .addInterceptor(interceptor)
+            .addInterceptor(AuthInterceptor())
+            .build()
 
-        Retrofit
-            .Builder()
+
+        Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
