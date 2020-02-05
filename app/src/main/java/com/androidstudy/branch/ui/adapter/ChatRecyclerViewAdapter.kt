@@ -9,8 +9,10 @@ import com.androidstudy.branch.R
 import com.androidstudy.branch.data.model.ChatMessage
 import com.androidstudy.branch.util.Utils.Companion.getFormattedUpdateTime
 
-class ChatRecyclerViewAdapter(private val mMessageList: List<ChatMessage>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatRecyclerViewAdapter(
+    private val mMessageList: List<ChatMessage>
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     override fun getItemCount(): Int {
         return mMessageList.size
     }
@@ -60,8 +62,8 @@ class ChatRecyclerViewAdapter(private val mMessageList: List<ChatMessage>) :
 
     private inner class SentMessageHolder internal constructor(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var messageText: TextView
-        var timeText: TextView
+        var messageText: TextView = itemView.findViewById(R.id.textSentMessageBody)
+        var timeText: TextView = itemView.findViewById(R.id.textSentMessageTime)
         fun bind(message: ChatMessage) {
             messageText.text = message.body
             timeText.text = getFormattedUpdateTime(
@@ -69,16 +71,12 @@ class ChatRecyclerViewAdapter(private val mMessageList: List<ChatMessage>) :
             )
         }
 
-        init {
-            messageText = itemView.findViewById(R.id.textSentMessageBody)
-            timeText = itemView.findViewById(R.id.textSentMessageTime)
-        }
     }
 
     private inner class ReceivedMessageHolder internal constructor(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var messageText: TextView
-        var timeText: TextView
+        var messageText: TextView = itemView.findViewById(R.id.textMessageBody)
+        var timeText: TextView = itemView.findViewById(R.id.textMessageTime)
         var nameText: TextView? = null
         fun bind(message: ChatMessage) {
             messageText.text = message.body
@@ -87,10 +85,6 @@ class ChatRecyclerViewAdapter(private val mMessageList: List<ChatMessage>) :
             )
         }
 
-        init {
-            messageText = itemView.findViewById(R.id.textMessageBody)
-            timeText = itemView.findViewById(R.id.textMessageTime)
-        }
     }
 
     companion object {
