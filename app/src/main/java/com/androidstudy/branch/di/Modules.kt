@@ -33,7 +33,6 @@ val retrofitModule = module(override = true) {
             .addInterceptor(AuthInterceptor())
             .build()
 
-
         Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

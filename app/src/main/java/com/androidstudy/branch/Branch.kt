@@ -23,7 +23,7 @@ class Branch : Application() {
         settings = Settings(applicationContext)
         mInstance = this
 
-        Branch.appContext = applicationContext
+        appContext = applicationContext
 
         initKoin()
         initTimber()
